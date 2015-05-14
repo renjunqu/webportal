@@ -46,5 +46,9 @@
          console.log("menu_2");
          window.location = "feature.jsp";
      });
+     $("#menu_3").click(function(){
+         console.log("menu_3");
+         window.location = "appshow.jsp";
+     });
   });
 </script>
