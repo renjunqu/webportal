@@ -32,6 +32,23 @@
  height:443px;
 }
 
+
+#appShow_title {
+ width:226px;
+ height:41px;
+ position:absolute;
+ top:0px;
+ left:50%;
+ -ms-transform:translate(-50%,0%);
+ -webkit-transform:translate(-50%,0%);
+ -moz-transform:translate(-50%,0%);
+ -o-transform:translate(-50%,0%);
+ transform:translate(-50%,0%);
+ background:url(/static/images/appShow_title.png) no-repeat;
+ background-size:226px 41px;
+ background-position:0px 0px;
+}
+
 #appShow_login {
   position:absolute;
   bottom:0px; 
@@ -51,17 +68,83 @@
   text-align:center;
   font-size:12px;
 }
+#lrow_2 {
+  position:absolute;
+  top:111px;
+  left:20px;
+  width:208px;
+  height:31px;
+
+
+}
+#lrow_3 {
+  position:absolute;
+  top:168px;
+  left:20px;
+  height:31px;
+  width:282px;
+
+}
+
 #lrow_4 {
   position:absolute;
   top:230px;
-  right:100px;
+  left:47px;
   height:38px;
   line-height:38px;
-  width:177px;
+  width:164px;
   text-align:center;
   font-size:12px;
   background-color:#e5c167;
   border-radius:5px;
   color:#fff;
   cursor:pointer;
+}
+
+#appShow_icon1 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	height:30px;
+	width:37px;
+	background:url(/static/images/appShow_icon1.png) no-repeat;
+	background-size:24px 30px;
+	background-position:0px 0px;
+}
+#appShow_input1 {
+	position:absolute;
+	left:30px;
+	top:0px;
+	width:158px;
+	height:30px;
+	border-bottom:1px solid #ccc;
+}
+#appShow_icon2 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	height:30px;
+	width:37px;
+	background:url(/static/images/appShow_icon2.png) no-repeat;
+	background-size:24px 30px;
+	background-position:5px 3px;
+}
+#appShow_input2 {
+	position:absolute;
+	left:30px;
+	top:0px;
+	height:30px;
+	width:158px;
+	border-bottom:1px solid #ccc;
+}
+#appShow_getCode {
+	position:absolute;
+	right:0px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	width:86px;
+	background-color:#e5c167;
+	color:#fff;
+	font-size:10px;
 }

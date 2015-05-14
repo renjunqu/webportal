@@ -1,0 +1,7 @@
+#usage_show {
+  width:1024px;
+  height:700px;
+  background:url(/static/images/usage_step1.png) no-repeat;
+  background-size:1024px 700px;
+  background-position:0px 0px;
+}

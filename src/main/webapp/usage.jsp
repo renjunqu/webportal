@@ -18,7 +18,7 @@
     <header>
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/static/main.css" />
-    <link rel="stylesheet" href="/static/appshow.css" />
+    <link rel="stylesheet" href="/static/usage.css" />
          <!--[if lt IE 9]>
 	  <script src="/static/html5shiv.js"></script>
 	  <script src="/static/respond.min.js"></script>  
@@ -27,41 +27,8 @@
 <body>
      <%@ include file="header.jsp"%> 
      <div id="main">
-          <div style="position:relative;height:200px;"></div>
-          <div style="position:absolute;top:200px;bottom:0px;left:0px;right:0px;">
-		  <div style="height:100%;width:50%;position:absolute;left:0px;">
-			 <div id="appShow_phone1">
-			 </div>
-			 <div id="appShow_phone2">
-			 </div>
-		  </div>
-		  <div style="height:100%;width:50%;position:absolute;right:0px;">
-                       <div id="appShow_actions" class="center_align">
-                               <div id="appShow_title"></div>
-			       <div id="appShow_login">
-				   <div id="lrow_1">已有账号? <span style="color:#50b3b1;cursor:pointer;">立即登录</span></div>
-				   <div id="lrow_2">
-					   <div id="appShow_icon1"></div>
-					   <div id="appShow_input1">
-						   <input type="text" class="thin_input" placeholder="请输入手机号" style="width:150px;height:30px;"></input>
-					   </div>
-				   </div>
-				   <div id="lrow_3">
-					   <div id="appShow_icon2"></div>
-					   <div id="appShow_input2">
-						   <input type="text" class="thin_input" placeholder="请输入验证码" style="width:150px;height:30px;"></input>
-					   </div>
-					   <div id="appShow_getCode">
-						   获取验证码
-					   </div>
-				   </div>
-				   <div id="lrow_4">
-					  立即注册
-				   </div>
-			       </div>
-                       </div>
-		  </div>
-          </div>
+	     <div class="center_align" id="usage_show">
+             </div>
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>

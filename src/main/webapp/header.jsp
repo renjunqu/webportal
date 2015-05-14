@@ -50,5 +50,9 @@
          console.log("menu_3");
          window.location = "appshow.jsp";
      });
+     $("#menu_4").click(function(){
+         console.log("menu_4");
+         window.location = "usage.jsp";
+     });
   });
 </script>

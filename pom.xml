@@ -255,15 +255,6 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
-
-
-		<dependency>
-			<groupId>com.futuremove</groupId>
-			<artifactId>alipay</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
