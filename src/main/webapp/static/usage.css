@@ -1,7 +1,46 @@
 #usage_show {
   width:1024px;
   height:700px;
-  background:url(/static/images/usage_step1.png) no-repeat;
+  background:url(/static/images/usage1.png) no-repeat;
   background-size:1024px 700px;
   background-position:0px 0px;
 }
+#usage_navbar {
+   position:absolute;
+   left:20px;
+   top:50%;
+   z-index:100;
+   -ms-transform:translate(0%,-50%);
+   -webkit-transform:translate(0%,-50%);
+   -moz-transform:translate(0%,-50%);
+   -o-transform:translate(0%,-50%);
+    transform:translate(0%,-50%);
+    width:30px;
+    height:340px;
+    border-radius:10px;
+    background-color:rgba(255,100,255,0.5);
+    border:0px solid;
+}
+
+div[id^=nav_] {
+	position:absolute;
+	cursor:pointer;
+	left:50%;
+	height:20px;
+	width:20px;
+	border-radius:20px;
+	background-color:#0cc;
+        -ms-transform:translate(-50%,0%);
+        -webkit-transform:translate(-50%,0%);
+        -moz-transform:translate(-50%,0%);
+        -o-transform:translate(-50%,0%);
+         transform:translate(-50%,0%);
+}
+
+#nav_1 {
+	  top:40px;
+	  background-color:#00c;
+       }
+#nav_2 {top:120px;}
+#nav_3 {top:200px;}
+#nav_4 {top:280px;}

@@ -29,10 +29,18 @@
      <div id="main">
 	     <div class="center_align" id="usage_show">
              </div>
+	     <div id="usage_navbar">
+		     <div id="nav_1"></div>
+		     <div id="nav_2"></div>
+		     <div id="nav_3"></div>
+		     <div id="nav_4"></div>
+             </div>
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
+       var prev_step = null;
        $(function(){
+            prev_step = $("#nav_1").get(0);
             $("#header").addClass("bottomShadow");
             var headerHeight = $("#header").height();
             headerHeight -=20;
@@ -45,6 +53,17 @@
             appTitleTop = appTitleTop.replace("px","");
             appTitleTop = appTitleTop - 20;
             $("#app_title").css({"top":appTitleTop + "px"});
+	    $("[id^=nav_]").click(function(e){
+		    $(prev_step).css({"background-color":"#0cc"});
+		    prev_step = e.target;
+		    $(prev_step).css({"background-color":"#00c"});
+		    var id = $(prev_step).attr("id");
+		    id = id.replace("nav_","usage");
+		    $("#usage_show").css({"background":"url('/static/images/"+id+".png') no-repeat",
+			                  "background-size":"1024px 700px",
+                                          "background-position":"0px 0px" 
+			    });
+            });
         });
    </script>
 </body>
