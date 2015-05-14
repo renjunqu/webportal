@@ -1,0 +1,116 @@
+div#header {
+  width:100%;
+  height:126px;
+  background-color:#fff;
+  position:absolute;
+  top:0px;
+  left:0px;
+  border:0px solid;
+}
+
+
+div#app_title {
+  height:46px;
+  width:118px;
+  position:absolute;
+  left:16px;
+  top:40px;
+  background:url(/static/images/app_title.png) no-repeat;
+  background-size:118px 46px;
+  background-position:0px 0px;
+  z-index:50;
+}
+
+div#menuBar {
+   height:52px;
+   width:562px;
+   border:0px solid;
+
+}
+
+div[id^="menu_"] {
+  float:left;
+  width:92px;
+  height:50px;
+  border:0px solid blue;
+}
+
+.menu_split {
+   float:left;
+   width:2px;
+   height:50px;
+   border:0px solid red;
+   background: url(/static/images/menu_split.png) no-repeat;
+   background-size:2px 20px;
+   background-position:0px 15px;
+
+}
+.menu_icon {
+     background:url(/static/images/hb_icons.png) no-repeat;
+     background-size:512px 100px;
+     vertical-align:middle;
+     height:50px;
+     width:92px;
+     cursor:pointer;
+}
+
+.icon-01 {background-position: 32px 0px;}
+.icon-01:hover  {background-position: 32px -50px;}
+.icon-02 {background-position: -61px 0px;}
+.icon-02:hover  {background-position: -61px -50px;}
+.icon-03 {background-position: -154px 0px;}
+.icon-03:hover  {background-position: -154px -50px;}
+.icon-04 {background-position: -247px 0px;}
+.icon-04:hover {background-position: -247px -50px;}
+.icon-05 {background-position: -340px 0px;}
+.icon-05:hover {background-position: -340px -50px;}
+.icon-06 {background-position: -433px 0px;}
+.icon-06:hover {background-position: -433px -50px;}
+
+div#header_rightToolBar {
+   position:absolute;
+   right:28px;
+   top:8px;
+   width:100px;
+   height:78px;
+   border:0px solid red;
+}
+
+div#header_login_b {
+  position:absolute;
+  top:0px;
+  left:1px;
+  height:40px;
+  width:25px;
+  background:url(/static/images/header_login_button.png) no-repeat;
+  background-size:25px 82px;
+  background-position:0px 0px;
+  cursor:pointer;
+}
+
+div#header_login_b:hover  {background-position:0px -41px;}
+
+div#header_register_b {
+  position:absolute;
+  top:0px;
+  right:1px;
+  height:40px;
+  width:25px;
+  background:url(/static/images/header_register_button.png) no-repeat;
+  background-size:25px 82px;
+  background-position:0px 0px;
+  cursor:pointer;
+}
+div#header_register_b:hover  {background-position:0px -41px;}
+
+div#header_web_b {
+  position:absolute;
+  bottom:0px;
+  width:100px;
+  height:30px;
+  background:url(/static/images/header_web_button.png) no-repeat;
+  background-size:100px 30px;
+  background-position:0px 0px;
+  cursor:pointer;
+}
+

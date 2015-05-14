@@ -1,0 +1,7 @@
+*.war
+.idea/*
+target/*
+target
+.idea
+*.mp4
+*.iml

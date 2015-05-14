@@ -1,0 +1,13 @@
+INFO http-bio-8080-exec-1 com.joymove.view.JOYCarController - i am just the log4j tester
+ERROR localhost-startStop-1 com.joymove.util.ApplicationEnvInit - consumer start failed
+ERROR localhost-startStop-1 com.joymove.util.ApplicationEnvInit - consumer start failed
+DEBUG http-bio-8080-exec-2 com.joymove.service.impl.JOYOrderServiceImpl - to be deleted jobs : clearExpire.178888163803
+DEBUG http-bio-8080-exec-3 com.joymove.service.impl.JOYOrderServiceImpl - to be deleted jobs : clearExpire.185002176423
+DEBUG http-bio-8080-exec-4 com.joymove.service.impl.JOYOrderServiceImpl - to be deleted jobs : clearExpire.185002176423
+DEBUG http-bio-8080-exec-3 com.joymove.service.impl.JOYOrderServiceImpl - to be deleted jobs : clearExpire.185002176423
+ERROR localhost-startStop-1 com.joymove.util.ApplicationEnvInit - consumer start failed
+ERROR localhost-startStop-1 com.joymove.util.ApplicationEnvInit - consumer start failed
+ERROR localhost-startStop-1 com.joymove.util.ApplicationEnvInit - consumer start failed
+ERROR localhost-startStop-1 com.joymove.util.ApplicationEnvInit - consumer start failed
+ERROR localhost-startStop-1 com.joymove.util.ApplicationEnvInit - consumer start failed
+ERROR localhost-startStop-1 com.joymove.util.ApplicationEnvInit - consumer start failed

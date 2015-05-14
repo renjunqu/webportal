@@ -1,0 +1,32 @@
+/*    ===============    */
+.bottomShadow {
+  box-shadow: 0px 5px 10px 0px  #aaa;
+  -moz-box-shadow: 0px 5px 10px 0px  #aaa;
+  -webkit-shadow: 0px 5px 10px 0px  #aaa;
+}
+
+div#main {
+   position:absolute;
+   top:131px;
+   left:0px;
+   bottom:0px;
+   border:0px solid red;
+   width:100%;
+   overflow-y:scroll;
+   overflow-x:hidden;
+}
+.center_align {
+     position: absolute; 
+     left: 50%; 
+     top: 50%;
+     -ms-transform:translate(-50%,-50%);
+     -webkit-transform:translate(-50%,-50%);
+     -moz-transform:translate(-50%,-50%);
+     -o-transform:translate(-50%,-50%);
+     transform:translate(-50%,-50%);
+}
+
+.thin_input {
+      border:0px solid;
+      padding:0px;
+}

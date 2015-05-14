@@ -1,0 +1,66 @@
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.MQEndPoint - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN pool-1-thread-5 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-5 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN pool-1-thread-4 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-4 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN pool-1-thread-9 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-9 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN pool-1-thread-4 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-4 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN pool-1-thread-15 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-15 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN pool-1-thread-10 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-10 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN pool-1-thread-20 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-20 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN pool-1-thread-15 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-15 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN pool-1-thread-24 com.futuremove.cacheServer.amqp.consumers.CMConsumer - now the channel shutdown !!!qrjCus1
+WARN pool-1-thread-24 com.futuremove.cacheServer.amqp.consumers.CMConsumer - reason null
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - MQConsumer init  !!!
+WARN localhost-startStop-1 com.futuremove.cacheServer.amqp.consumers.CMConsumer - init amqp consumer over

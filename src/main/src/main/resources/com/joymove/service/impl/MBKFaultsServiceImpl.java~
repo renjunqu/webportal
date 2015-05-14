@@ -1,0 +1,56 @@
+package com.mobike.service.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import com.mobike.dao.MBKFaultsDao;
+import com.mobike.entity.MBKFaults;
+import com.mobike.service.MBKFaultsService;
+
+public class MBKFaultsServiceImpl implements MBKFaultsService{
+
+	private MBKFaultsDao mbkfaultsDao;
+	
+
+
+
+
+
+
+	public MBKFaultsDao getMbkfaultsDao() {
+		return mbkfaultsDao;
+	}
+
+
+
+	public void setMbkfaultsDao(MBKFaultsDao mbkfaultsDao) {
+		this.mbkfaultsDao = mbkfaultsDao;
+	}
+
+
+
+	@Override
+	public void insertMBKFaults(MBKFaults mbkfaults) {
+		// TODO Auto-generated method stub
+		mbkfaultsDao.insertMBKFaults(mbkfaults);
+	}
+
+
+
+	@Override
+	public void updateMBKFaults(MBKFaults mbkfaults) {
+		// TODO Auto-generated method stub
+		mbkfaultsDao.updateMBKFaults(mbkfaults);
+	}
+
+
+
+	@Override
+	public List<MBKFaults> getMBKFaultsById(Map<String, Object> likeCondition) {
+		// TODO Auto-generated method stub
+		return mbkfaultsDao.getMBKFaults(likeCondition);
+	}
+	
+	
+
+}

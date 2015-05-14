@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="joymove"
+  id="myeclipse.1426123008796"
+  context-root="/joymove"
+  j2ee-spec="6.0"
+  archive="joymove.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

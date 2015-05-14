@@ -1,0 +1,195 @@
+div#indexRightBar {
+  position:absolute;
+  right:0px;
+  top:0px;
+  height:100%;
+  width:283px;
+  border:0px solid blue;
+  z-index:100;
+  background-color:rgba(255,255,255,0.1);
+/*
+  filter:alpha(Opacity=20);
+  -moz-opacity:0.2;
+  opacity: 0.2;
+*/
+  overflow:hidden;
+}
+
+#indexRightBar #resizeBar {
+  position:absolute;
+  left:0px;
+  height:123px;
+  width:5px;
+  top:50%;
+  border:0px solid;
+  -ms-transform:translate(0%,-50%);
+  -webkit-transform:translate(0%,-50%);
+  -moz-transform:translate(0%,-50%);
+  -o-transform:translate(0%,-50%);
+  transform:translate(0%,-50%);
+  background:url(/static/images/resize_handle.png) no-repeat;
+  background-size:5px 123px;
+  background-position:0px 0px;
+  z-index:50;
+}
+
+#indexRightBar #resizeBar:hover {cursor:ew-resize;}
+
+#rightBar_close {
+   position:absolute;
+   top:9px;
+   right:15px;
+   width:21px;
+   height:22px;
+   background:url(/static/images/rightBar_close.png) no-repeat;
+   background-size:21px 22px;
+   background-position:0px 0px;
+   cursor:pointer;
+}
+
+#rightBar_joinSuda {
+    position:absolute;
+    top:54px;
+    left:50%;
+    -ms-transform:translate(-50%,0%);
+    -webkit-transform:translate(-50%,0%);
+    -moz-transform:translate(-50%,0%);
+    -o-transform:translate(-50%,0%);
+    transform:translate(-50%,0%);
+    height:112px;
+    width:194px;
+    border:0px solid;
+}
+/*
+                            <div id="rightBar_joinTitle"></div>
+                            <div id="rightBar_joinAction"></div>
+*/
+#rightBar_joinTitle {
+     position:absolute;
+     top:0px;
+     width:100%;
+     height:44px;
+     background:url(/static/images/rightBar_joinTitle.png) no-repeat;
+     background-size:94px 44px;
+     background-position:0px 0px;
+}
+#rightBar_joinAction {
+     position:absolute;
+     bottom:0px;
+     width:100%;
+     height:44px;
+}
+#joinAction_1 {
+   float:left;
+   width:44px;
+   height:44px;
+   background:url(/static/images/rightBar_joinPraise.png) no-repeat;
+   background-size:44px 44px;
+   background-position:0px 0px;
+   border-radius:23px;
+}
+#joinAction_2 {
+   float:left;
+   width:53px;
+   height:44px;
+   text-align:center;
+   line-height:44px;
+   color:red;
+}
+#joinAction_3 {
+   float:left;
+   width:43px;
+   height:44px;
+   background:url(/static/images/rightBar_joinView.png) no-repeat;
+   background-size:43px 44px;
+   background-position:0px 0px;
+}
+#joinAction_4 {
+   float:left;
+   width:53px;
+   height:44px;
+   text-align:center;
+   line-height:44px;
+   color:red;
+}
+
+#rightBar_login {
+   position:absolute;
+   right:5px;
+   top:50%;
+  -ms-transform:translate(0%,-50%);
+  -webkit-transform:translate(0%,-50%);
+  -moz-transform:translate(0%,-50%);
+  -o-transform:translate(0%,-50%);
+  transform:translate(0%,-50%);
+  z-index:10;
+  height:80px;
+  width:265px;
+  border:0px solid;
+}
+
+#rb_login_top_icon {
+     height:36px;  
+     width:35px; 
+     background:url(/static/images/rb_login_top.png) no-repeat;
+     background-size:23px 26px;
+     background-position:6px 4px;
+}
+
+#rb_login_mobileNo_input {
+     height:36px;   
+     width:230px;
+     border:0px solid;
+}
+div#rb_login_mobileNo_input input {
+      background-color:rgba(255,255,255,0.6);
+      width:230px;
+      height:36px;
+}
+
+
+
+#rb_login_bottom_icon {
+     height:36px;  
+     width:35px; 
+     background:url(/static/images/rb_login_bottom.png) no-repeat;
+     background-size:21px 24px;
+     background-position:6px 10px;
+}
+
+#rb_login_bottom_code_input {
+     height:36px;   
+     width:151px;
+     border:0px solid;
+}
+div#rb_login_bottom_code_input input {
+      background-color:rgba(255,255,255,0.6);
+      width:151px;
+      height:36px;
+}
+
+#rb_login_bottom_code_b {
+     height:36px;   
+     width:79px;
+     border:0px solid;
+     background-color:rgba(255,255,255,0.9);
+     color:red;
+     text-align:center;
+     line-height:36px;
+     font-size:12px;
+}
+/********      **********/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:   red; 
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:   red; 
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:   red; 
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:   red; 
+}
+
+
