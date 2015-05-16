@@ -25,6 +25,9 @@
 	<![endif]-->
     </header>
 <body>
+     <script>
+         var currMenu = "menu_1";
+     </script>
      <%@ include file="header.jsp"%> 
      <div id="main">
              <video id="indexVideo" style=" width:100%    !important;height:auto   !important;position:absolute;bottom:0px;" controls>

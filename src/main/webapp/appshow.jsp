@@ -25,6 +25,9 @@
 	<![endif]-->
     </header>
 <body>
+     <script>
+         var currMenu = "menu_3";
+     </script>
      <%@ include file="header.jsp"%> 
      <div id="main">
           <div style="position:relative;height:200px;"></div>

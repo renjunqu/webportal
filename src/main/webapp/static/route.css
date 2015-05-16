@@ -1,0 +1,176 @@
+#main {
+  background:url(/static/images/route_background.png) no-repeat;
+  background-size:100% 100%;
+}
+
+#topTitle {
+position:absolute;
+width:100%;
+height:100px;
+top:0px;
+}
+
+#topTitle div {
+  height:34px;
+  width:119px;
+  background:url(/static/images/route_title.png) no-repeat;
+  background-size:100% 100%;
+}
+
+#mainContent {
+ position:absolute;
+top:100px;
+height:495px;
+width:100%;
+z-index:100;
+overflow:visible;
+}
+
+#inputDiv {
+   width:50%;
+   height:375px;
+   position:absolute;
+   left:0px;
+}
+
+#inputContainer {
+	position:absolute;
+	border:0px solid;
+	overflow:visible;
+	width:276px;
+	height:170px;
+	right:134px;
+	top:0px;
+}
+
+
+.selfloc_input_div {
+position:relative;
+width:100%;
+height:56px;
+background:url(/static/images/selfloc.png) no-repeat;
+background-position:0px 12px;
+}
+
+.desloc_input_div {
+  position:relative;
+  width:100%;
+  height:56px;
+  background:url(/static/images/desloc.png) no-repeat;
+  background-position:-2px 12px;
+}
+
+.time_input_div {
+  position:relative;
+  width:100%;
+  height:56px;
+  background:url(/static/images/gotime.png) no-repeat;
+  background-position:0px 12px;
+}
+
+input {
+background:rgba(255,255,255,0.0);
+position:absolute;
+right:0px;
+width:235px;
+height:56px;
+font-size:15px;
+}
+
+#inputAction {
+    position:absolute;
+    bottom:-31px;
+    left:171px;
+    height:27px;
+    border:0px solid #000;
+    width:151px;
+    text-align:right;
+    color:#a7a4a3;
+    font-size:20px;
+}
+
+#inputAction pre {
+  display:inline-block;
+  margin:0px;
+  padding:0px;
+  height:27px;
+  line-height:27px;
+  cursor:pointer;
+}
+
+#addRoute_div {
+   position:absolute;
+   height:31px;
+   width:26px;
+   background:url(/static/images/addroute.png) no-repeat;
+   background-size:100% 100%;
+   left:0px;
+   top:50%;
+   -ms-transform:translate(0%,-50%);
+   -webkit-transform:translate(0%,-50%);
+   -moz-transform:translate(0%,-50%);
+   -o-transform:translate(0%,-50%);
+   transform:translate(0%,-50%);
+   cursor:pointer; 
+}
+
+#mapDiv {
+   width:50%;
+   height:375px;
+   position:absolute;
+   right:0px;
+   overflow:visible;
+}
+
+
+#mapContainer {
+   position:absolute;
+   width:332px;
+   height:260px;
+   left:85px;
+   top:0px;
+   overflow:visible;
+}
+
+#couponGet {
+   position:absolute;
+   width:90px;
+   height:100px;
+   border:0px solid;
+   bottom:0px;
+   right:-45px;
+   z-index:900;
+   background:url(/static/images/couponseed.png) no-repeat;
+   background-size:100% 100%;
+}
+
+
+#bottomTitle {
+  background:url(/static/images/route_bottom.png) no-repeat;
+  background-size:contain;
+  position:absolute;
+  width:500px;
+  height:120px;
+  bottom:0;
+  left:50%;
+  z-index:3;
+  -ms-transform:translate(-50%,0%);
+  -webkit-transform:translate(-50%,0%);
+  -moz-transform:translate(-50%,0%);
+  -o-transform:translate(-50%,0%);
+  transform:translate(-50%,0%);
+}
+
+.autobox {
+overflow: auto; 
+border: 1px solid gray;
+display: none;
+background:#fff;
+width:235px;
+position:absolute;
+right:0px;
+top:56px;
+z-index:2000;
+}
+
+

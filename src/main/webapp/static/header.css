@@ -33,10 +33,14 @@ div[id^="menu_"] {
   width:92px;
   height:50px;
   border:0px solid blue;
+  cursor:pointer;
+  overflow:hidden;
+  margin:0;
 }
 
 .menu_split {
    float:left;
+   margin:0;
    width:2px;
    height:50px;
    border:0px solid red;
@@ -46,26 +50,31 @@ div[id^="menu_"] {
 
 }
 .menu_icon {
+     position:absolute;
+     left:0px;
+     top:0px;
+     margin:0;
      background:url(/static/images/hb_icons.png) no-repeat;
      background-size:512px 100px;
-     vertical-align:middle;
-     height:50px;
+     height:100px;
      width:92px;
-     cursor:pointer;
 }
 
 .icon-01 {background-position: 32px 0px;}
-.icon-01:hover  {background-position: 32px -50px;}
 .icon-02 {background-position: -61px 0px;}
-.icon-02:hover  {background-position: -61px -50px;}
 .icon-03 {background-position: -154px 0px;}
-.icon-03:hover  {background-position: -154px -50px;}
 .icon-04 {background-position: -247px 0px;}
-.icon-04:hover {background-position: -247px -50px;}
 .icon-05 {background-position: -340px 0px;}
-.icon-05:hover {background-position: -340px -50px;}
 .icon-06 {background-position: -433px 0px;}
-.icon-06:hover {background-position: -433px -50px;}
+
+.menu_selected {
+  -ms-transform:translate(0%,-50px);
+  -webkit-transform:translate(0%,-50px);
+  -moz-transform:translate(0%,-50px);
+  -o-transform:translate(0%,-50px);
+  transform:translate(0%,-50px);
+}
+
 
 div#header_rightToolBar {
    position:absolute;
