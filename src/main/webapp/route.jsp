@@ -39,14 +39,14 @@
                            <div id="inputContainer">
                                    <div>
 					   <div class="selfloc_input_div">
-						  <input id="selfloc_input" type="text" class="thin_input" placeholder="我的位置">
+						  <input class="selfloc_input thin_input" type="text" placeholder="我的位置">
 						  </input>
-                                                  <div class="autobox" id="result1"></div>
-                                                  <div id="result"></div>
+                                                  <div class="autobox selfloc_result"></div>
 					   </div>
 					   <div class="desloc_input_div">
-						  <input type="text" class="thin_input" placeholder="输入终点">
+						  <input type="text" class="desloc_input thin_input" placeholder="输入终点">
 						  </input>
+                                                  <div class="autobox desloc_result"></div>
 					   </div>
 					   <div class="time_input_div" >
 						  <input type="text" class="thin_input" placeholder="出行时间">
@@ -68,125 +68,159 @@
           </div>
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
+    <script>
+            $("#header").addClass("bottomShadow");
+            var headerHeight = $("#header").height();
+            headerHeight -=20;
+            $("#header").height(headerHeight);
+            var mainTop = $("#main").css("top");
+            mainTop = mainTop.replace("px","");
+            mainTop = mainTop - 20;
+            $("#main").css({"top":mainTop+"px"});
+            var appTitleTop = $("#app_title").css("top");
+            appTitleTop = appTitleTop.replace("px","");
+            appTitleTop = appTitleTop - 20;
+            $("#app_title").css({"top":appTitleTop + "px"});
+   </script>
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=103e3fae6c781ad2da0587f2b04a2034"></script>
     <script>
-     var marker = new Array();  
-var windowsArr = new Array();
-var cloudDataLayer;
-     //添加marker&infowindow      
-function addmarker(i, d) {  
-	var lngX; 
-	var latY;
-	var iName;
-	var iAddress;
-	if(d.location){
-		lngX = d.location.getLng();  
-		latY = d.location.getLat();  
-	}else{
-		lngX = d._location.getLng();  
-		latY = d._location.getLat(); 
-	}
-	if(d.name){
-		iName = d.name;
-	}else{
-		iName = d._name;
-	}
-	if(d.name){
-		iAddress = d.address;
-	}else{
-		iAddress = d._address;
-	}
-    var markerOption = {  
-        map:map,  
-        icon:"http://webapi.amap.com/images/" + (i + 1) + ".png",  
-        position:new AMap.LngLat(lngX, latY)  
-    };  
-    var mar = new AMap.Marker(markerOption);            
-    marker.push(new AMap.LngLat(lngX, latY));  
-  
-    var infoWindow = new AMap.InfoWindow({  
-        content:"<h3><font color=\"#00a6ac\">" + (i + 1) + ". " + iName + "</font></h3>" + TipContents(d.type, iAddress, d.tel),  
-        size:new AMap.Size(300, 0),   
-        autoMove:true,    
-        offset:new AMap.Pixel(0,-30)  
-    });  
-    windowsArr.push(infoWindow);   
-    var aa = function (e) {infoWindow.open(map, mar.getPosition());};  
-    AMap.event.addListener(mar, "click", aa);  
-}
-                function addmarker2(i,d){    
-    var markerOption = {  
-        map:map,               
-        icon:"http://webapi.amap.com/images/point.png",    
-        position:new AMap.LngLat(d.x,d.y),    
-        offset:{x:-8,y:-9}    
-    };                
-    var mar =new AMap.Marker(markerOption);    
-    marker.push(new AMap.LngLat(d.x,d.y));  
-    var infoWindow = new AMap.InfoWindow({    
-        content:"&nbsp;&nbsp;"+(i+1) + ". "+ d.roadname2 +"和"+d.roadname1+"交叉口"+"<br />",    
-        size:new AMap.Size(300,0),    
-        autoMove:true  
-    });    
-    windowsArr.push(infoWindow);    
-     
-    var aa=function(e){infoWindow.open(map,mar.getPosition());};    
-    AMap.event.addListener(mar,"click",aa);    
-}  
-                function TipContents(type, address, tel) {  //窗体内容  
-    if (type == "" || type == "undefined" || type == null || type == " undefined" || typeof type == "undefined") {  
-        type = "暂无";  
-    }  
-    if (address == "" || address == "undefined" || address == null || address == " undefined" || typeof address == "undefined") {  
-        address = "暂无";  
-    }  
-    if (tel == "" || tel == "undefined" || tel == null || tel == " undefined" || typeof address == "tel") {  
-        tel = "暂无";  
-    }  
-    var str = "&nbsp;&nbsp;地址：" + address + "<br />&nbsp;&nbsp;电话：" + tel + " <br />&nbsp;&nbsp;类型：" + type;  
-    return str;  
-}  
-                //从输入提示框中选择关键字并查询  
-		function selectResult(index) {  
-		    if (navigator.userAgent.indexOf("MSIE") > 0) {  
-			document.getElementById("selfloc_input").onpropertychange = null;  
-			document.getElementById("selfloc_input").onfocus = focus_callback;  
-		    }  
-		    //截取输入提示的关键字部分  
-		    var text = document.getElementById("divid" + (index + 1)).innerHTML.replace(/<[^>].*?>.*<\/[^>].*?>/g,"");;  
-		    document.getElementById("selfloc_input").value = text;  
-		    document.getElementById("result1").style.display = "none";  
-		    //根据选择的输入提示关键字查询  
-		    map.plugin(["AMap.PlaceSearch"], function() {          
-			var msearch = new AMap.PlaceSearch();  //构造地点查询类  
-			AMap.event.addListener(msearch, "complete", Search_CallBack); //查询成功时的回调函数  
-			msearch.search(text);  //关键字查询查询  
-		    });  
-		}  
-               function onmouseout_MarkerStyle(pointid, thiss) { //鼠标移开后点样式恢复  
-			    thiss.style.background = "";  
-	        }
-                function openMarkerTipById1(pointid, thiss) {  //根据id 打开搜索结果点tip  
-		    thiss.style.background = '#CAE1FF';  
-		    windowsArr[pointid].open(map, marker[pointid]);  
+
+                function placeSearch(){
+		    var MSearch;
+		    AMap.service(["AMap.PlaceSearch"], function() {       
+		        MSearch = new AMap.PlaceSearch({ //构造地点查询类
+		            pageSize:10,
+		            pageIndex:1,
+		            city:"021" //城市
+		        });
+		        //关键字查询
+		        MSearch.search('东方明珠', function(status, result){
+		        	if(status === 'complete' && result.info === 'OK'){
+		        		keywordSearch_CallBack(result);
+		        	}
+		        }); 
+		    });
+		}
+
+
+		function bindAutoSearch(className,autoComplete_callback){
+			if (navigator.userAgent.indexOf("MSIE") > 0) {  
+				$("."+className).bind("propertychange",function(){
+			                         autoSearch(this,autoComplete_callback);	
+				});
+			}  
+			else {  
+				$("."+className).bind("input",function(){
+			                         autoSearch(this,autoComplete_callback);	
+				});
+			    
+			}  
+		}
+
+		function unbindAutoSearch(className){
+			if (navigator.userAgent.indexOf("MSIE") > 0) {  
+				$("."+className).unbind("propertychange");
+	                }  
+			else {  
+				$("."+className).unbind("input");
+			}  
+		}
+
+                
+               //自己位置输入提示  
+		function autoSearch(target,autoComplete_callback) {   
+		    var keywords = $(target).val();  
+		    if(keywords.length > 0 ) {
+		    var auto;    
+		    var autoOptions = {  
+			pageIndex:1,  
+			pageSize:10,  
+			city: "0010" //城市，默认全国  
+		    };  
+		    auto = new AMap.Autocomplete(autoOptions);  
+		    //查询成功时返回查询结果  
+		    AMap.event.addListener(auto, "complete", autoComplete_callback);  
+		    auto.search(keywords);  
+		    } else {
+			    $(target).next().html("");
+			    $(target).next().css({"display":"none"});
+		    }
 		} 
-                //输入提示框鼠标滑过时的样式  
-function openMarkerTipById(pointid, thiss) {  //根据id打开搜索结果点tip    
-    thiss.style.background = '#CAE1FF';  
-}  
-                //回调函数  
-		function Search_CallBack(data) {  
-		    var resultStr = "";  
-		    var poiArr = data.poiList.pois;  
-		    var resultCount = poiArr.length;  
-		    for (var i = 0; i < resultCount; i++) {  
-			resultStr += "<div id='divid" + (i + 1) + "' onmouseover='openMarkerTipById1(" + i + ",this)' onmouseout='onmouseout_MarkerStyle(" + (i + 1) + ",this)' style=\"font-size: 12px;cursor:pointer;padding:0px 0 4px 2px; border-bottom:1px solid #C1FFC1;\"><table><tr><td><img src=\"http://webapi.amap.com/images/" + (i + 1) + ".png\"></td>" + "<td><h3><font color=\"#00a6ac\">名称: " + poiArr[i].name + "</font></h3>";  
-			    resultStr += TipContents(poiArr[i].type, poiArr[i].address, poiArr[i].tel) + "</td></tr></table></div>";  
-			    addmarker(i, poiArr[i]);  
-		    }  
-		    map.setFitView();  
-		    document.getElementById("result").innerHTML = resultStr;  
-		}  
+
+		function autoCompleteSelfLoc(data){
+			//first remove the old tips
+			$(".selfloc_result").html("");
+			if(data.info == "OK" && data.count > 0 ) {
+                             var tips = data.tips;
+			     //
+			     //add the tips
+			     var tipElements = [];
+			     tips.forEach(function(tip,index){
+			           try {
+				   var tElement = "<div id=\"tip"+index+"\" class=\"tip\"><pre>"+tip.name+"  </pre><span style=\"color:#ccc\">"+tip.district+"</span></div>";
+				   } catch(e) {
+				      console.log(e); 
+				   }
+			           tipElements.push(tElement);		  
+		             });
+
+			     $(".selfloc_result").html(tipElements);
+			     $(".selfloc_result").css({"display":"block"});
+			     //add this tips object to these elemetn dom
+			     tipElements.forEach(function(e,i){
+			         	$("#tip"+i).data("tip",tips[i]); 
+			     });  
+			     $(".tip").click(function(){
+			             //$.thisTip = $(this).data("tip");
+				     $(this).parent().prev().data("selfloc",$(this).data("tip"));
+				     $(this).parent().prev().val($("pre",this).html().trim());
+				     //$(this).parent().prev().data("tip",thisTip);
+			     	     $(this).parent().html("");
+			     	     $(this).parent().css({"display":"none"});
+			             //console.log($(this).val()); 
+			     });
+
+			} else {
+			
+			}
+		}
+		function autoCompleteDesLoc(data){
+			//first remove the old tips
+			$(".desloc_result").html("");
+			if(data.info == "OK" && data.count > 0 ) {
+                             var tips = data.tips;
+			     //
+			     //add the tips
+			     var tipElements = [];
+			     tips.forEach(function(tip,index){
+			           try {
+				   var tElement = "<div id=\"dtip"+index+"\" class=\"tip\"><pre>"+tip.name+"  </pre><span style=\"color:#ccc\">"+tip.district+"</span></div>";
+				   } catch(e) {
+				      console.log(e); 
+				   }
+			           tipElements.push(tElement);		     
+		             });
+			     $(".desloc_result").html(tipElements);
+			     $(".desloc_result").css({"display":"block"});
+			     tipElements.forEach(function(e,i){
+			         	$("#dtip"+i).data("tip",tips[i]); 
+			     });  
+			     $(".tip").click(function(){
+				     $(this).parent().prev().data("desloc",$(this).data("tip"));
+				     $(this).parent().prev().val($("pre",this).html().trim());
+			     	     $(this).parent().html("");
+			     	     $(this).parent().css({"display":"none"});
+			             //console.log($(this).val()); 
+			     });
+
+			} else {
+			
+			}
+		}
+
+	     	var marker = new Array();  
+		var windowsArr = new Array();
+		var cloudDataLayer;
                 var map=null;
         	(function(exports){
 			
@@ -206,67 +240,14 @@ function openMarkerTipById(pointid, thiss) {  //根据id打开搜索结果点tip
                               var toolBar = new AMap.ToolBar();
                               map.addControl(toolBar);
                         });
-                        function autocomplete_CallBack(data){
-                                  var resultStr = "";  
-				    var tipArr = [];  
-				    tipArr = data.tips;  
-				    if (tipArr.length>0) {                    
-					for (var i = 0; i < tipArr.length; i++) {  
-					    resultStr += "<div id='divid" + (i + 1) + "' onmouseover='openMarkerTipById(" + (i + 1)  
-							+ ",this)' onclick='selectResult(" + i + ")' onmouseout='onmouseout_MarkerStyle(" + (i + 1)  
-							+ ",this)' style=\"background:#ccc;font-size: 13px;cursor:pointer;padding:5px 5px 5px 5px;\">" + tipArr[i].name + "<span style='color:#C1C1C1;'>"+ tipArr[i].district + "</span></div>";  
-					}  
-				    }  
-				    else  {  
-					resultStr = " π__π 亲,人家找不到结果!<br />要不试试：<br />1.请确保所有字词拼写正确<br />2.尝试不同的关键字<br />3.尝试更宽泛的关键字";  
-				    }  
-				     
-				    document.getElementById("result1").innerHTML = resultStr;  
-				    document.getElementById("result1").style.display = "block"; 
-                        }
-                  //输入提示  
-			function autoSearch() {   
-			    var keywords = document.getElementById("selfloc_input").value;  
-			    var auto;    
-			    var autoOptions = {  
-				pageIndex:1,  
-				pageSize:10,  
-				city: "" //城市，默认全国  
-			    };  
-			    auto = new AMap.Autocomplete(autoOptions);  
-			    //查询成功时返回查询结果  
-			    AMap.event.addListener(auto, "complete", autocomplete_CallBack);  
-			    auto.search(keywords);  
-			} 
-
-                 //加载输入提示插件  
-		 map.plugin(["AMap.Autocomplete"], function() {  
+                 	//加载输入提示插件  
+		 	map.plugin(["AMap.Autocomplete"], function() {  
 			//判断是否IE浏览器  
-			if (navigator.userAgent.indexOf("MSIE") > 0) {  
-			    document.getElementById("selfloc_input").onpropertychange = autoSearch;  
-			}  
-			else {  
-			    document.getElementById("selfloc_input").oninput = autoSearch;  
-			}  
+		        bindAutoSearch("selfloc_input",autoCompleteSelfLoc);
+		        bindAutoSearch("desloc_input",autoCompleteDesLoc);
 		    }); 
                         			
 		})(window);
     </script>
-    <script>
-       $(function(){
-            $("#header").addClass("bottomShadow");
-            var headerHeight = $("#header").height();
-            headerHeight -=20;
-            $("#header").height(headerHeight);
-            var mainTop = $("#main").css("top");
-            mainTop = mainTop.replace("px","");
-            mainTop = mainTop - 20;
-            $("#main").css({"top":mainTop+"px"});
-            var appTitleTop = $("#app_title").css("top");
-            appTitleTop = appTitleTop.replace("px","");
-            appTitleTop = appTitleTop - 20;
-            $("#app_title").css({"top":appTitleTop + "px"});
-        });
-   </script>
 </body>
 </html>

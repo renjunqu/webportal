@@ -162,15 +162,34 @@ font-size:15px;
 }
 
 .autobox {
-overflow: auto; 
-border: 1px solid gray;
+overflow:visible; 
+border: 0px solid gray;
 display: none;
 background:#fff;
-width:235px;
 position:absolute;
-right:0px;
+left:40px;
 top:56px;
 z-index:2000;
+}
+
+.tip {
+height:30px;
+line-height:30px;
+text-align:left;
+overflow:visible;
+background:#fff;
+border-style:dashed;
+border-width:0px 0px 1px 0px;
+cursor:pointer;
+}
+
+.tip pre {
+  margin:0px;
+  display:inline;
+}
+
+.tip:hover {
+background-color:#0cf;
 }
 
 

@@ -14,6 +14,7 @@
         import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/static/header.css" />
+<script type="text/javascript" src="/static/lib.js"></script>
 <div id="header">
     
      <div id="app_title"></div>
