@@ -32,6 +32,36 @@ overflow:visible;
    position:absolute;
    left:0px;
 }
+#inputDivNav {
+  position:absolute;
+  height:60px;
+  width:150px;
+  border:0px solid;
+  left:-152px;
+  top:50%;
+  -ms-transform:translate(0%,-50%);
+  -webkit-transform:translate(0%,-50%);
+  -moz-transform:translate(0%,-50%);
+  -o-transform:translate(0%,-50%);
+  transform:translate(0%,-50%);
+}
+
+#prevRoute {
+	position:absolute;
+	width:100%;
+	top:0px;
+	text-align:center;
+	cursor:pointer;
+}
+#nextRoute {
+	position:absolute;
+	width:100%;
+	bottom:0px;
+	text-align:center;
+	cursor:pointer;
+}
+
+
 
 #inputContainer {
 	position:absolute;
@@ -83,7 +113,7 @@ font-size:15px;
     left:171px;
     height:27px;
     border:0px solid #000;
-    width:151px;
+    width:181px;
     text-align:right;
     color:#a7a4a3;
     font-size:20px;
@@ -106,6 +136,26 @@ font-size:15px;
    background-size:100% 100%;
    left:0px;
    top:50%;
+   -ms-transform:translate(0%,-50%);
+   -webkit-transform:translate(0%,-50%);
+   -moz-transform:translate(0%,-50%);
+   -o-transform:translate(0%,-50%);
+   transform:translate(0%,-50%);
+   cursor:pointer; 
+}
+#delRoute_div {
+   position:absolute;
+   height:25px;
+   text-align:center;
+   line-height:25px;
+   width:25px;
+   left:46px;
+   font-size:25px;
+   font-weight:900;
+   top:50%;
+   color:#fff;
+   border-radius:26px;
+   background:#4cb3b1;
    -ms-transform:translate(0%,-50%);
    -webkit-transform:translate(0%,-50%);
    -moz-transform:translate(0%,-50%);

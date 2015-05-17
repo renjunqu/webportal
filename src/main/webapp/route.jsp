@@ -18,11 +18,13 @@
     <header>
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/static/main.css" />
+    <link rel="stylesheet" type="text/css" href="/static/jquery.datetimepicker.css"/>
     <link rel="stylesheet" href="/static/route.css" />
          <!--[if lt IE 9]>
 	  <script src="/static/html5shiv.js"></script>
 	  <script src="/static/respond.min.js"></script>  
 	<![endif]-->
+	 <script src="/static/jquery.datetimepicker.js"></script>
     </header>
 <body>
      <script>
@@ -37,7 +39,11 @@
           <div id="mainContent">
 		  <div id="inputDiv">
                            <div id="inputContainer">
-                                   <div>
+				  <div id="inputDivNav">
+					  <div id="prevRoute"> Prev </div>
+					  <div id="nextRoute"> Next </div>
+				  </div>
+                                  <div class="input_item curr_item">
 					   <div class="selfloc_input_div">
 						  <input class="selfloc_input thin_input" type="text" placeholder="我的位置">
 						  </input>
@@ -51,10 +57,15 @@
 					   <div class="time_input_div" >
 						  <input type="text" class="thin_input" placeholder="出行时间">
 						  </input>
+						  <script>
+						$(".time_input_div input").datetimepicker({
+								});
+						  </script>
 					   </div>
                                    </div>
                                    <div id="inputAction" >
                                         <div id="addRoute_div"></div>
+                                        <div id="delRoute_div">-</div>
                                         <pre>确     定</pre>
                                    </div>
                            </div>
@@ -82,6 +93,118 @@
             appTitleTop = appTitleTop.replace("px","");
             appTitleTop = appTitleTop - 20;
             $("#app_title").css({"top":appTitleTop + "px"});
+
+	    $("#addRoute_div").click(function(){
+                   var newRouteDivStr = "<div class=\"input_item\">"+
+		                            "<div class=\"selfloc_input_div\">" +  
+					         "<input class=\"selfloc_input thin_input\" type=\"text\" placeholder=\"我的位置\"></input>" + 
+                                                  "<div class=\"autobox selfloc_result\"></div>" +
+					     "</div>" + 
+					     "<div class=\"desloc_input_div\">" + 
+						  "<input type=\"text\" class=\"desloc_input thin_input\" placeholder=\"输入终点\">" + 
+						  "</input>" + 
+                                                  "<div class=\"autobox desloc_result\"></div>" + 
+					      "</div>" + 
+					      "<div class=\"time_input_div\" >" + 
+						  "<input type=\"text\" class=\"thin_input\" placeholder=\"出行时间\">" + 
+						  "</input>" + 
+						  "<script>" + 
+						  "$(\".time_input_div input\").datetimepicker({});<\/script>" +
+					       "</div>" +
+                                         "</div>"; 
+		//console.log(newRouteDivStr);
+		var currItem = $(".curr_item");
+		currItem.after(newRouteDivStr);
+		currItem.removeClass("curr_item");
+		var newItem = currItem.next();
+		newItem.addClass("curr_item");
+		$(".input_item").css({"display":"none"});
+		$(".curr_item").css({"display":"block"});
+		//unbindAutoSearch("selfloc_input");
+		//unbindAutoSearch("desloc_input");
+		bindAutoSearch("selfloc_input",newItem,autoCompleteSelfLoc);
+		bindAutoSearch("desloc_input",newItem,autoCompleteDesLoc);
+		map.clearMap();
+	    });
+
+	    $("#prevRoute").click(function(){
+			  var curr_item =   $(".curr_item");
+			  var prev_item = curr_item.prev();
+			  if(prev_item.hasClass("input_item")) {
+			         curr_item.removeClass("curr_item");
+                                 prev_item.addClass("curr_item");
+				 $(".input_item").css({"display":"none"});
+				 $(".curr_item").css({"display":"block"});
+		                 map.clearMap();
+				 var startmarker = $(".selfloc_input_div",prev_item).data("marker");
+				 var endmarker = $(".desloc_input_div",prev_item).data("marker");
+                                 if(startmarker) startmarker.setMap(map);
+                                 if(endmarker) endmarker.setMap(map);
+				 if(startmarker && endmarker) {
+				     	drivingRoute(startmarker,endmarker);
+				 }
+				 map.setFitView();
+			  } else {
+			  }
+			    
+	    });
+
+	    $("#nextRoute").click(function(){
+			  var curr_item =   $(".curr_item");
+			  var next_item = curr_item.next();
+			  if(next_item.hasClass("input_item")) {
+			         curr_item.removeClass("curr_item");
+                                 next_item.addClass("curr_item");
+				 $(".input_item").css({"display":"none"});
+				 $(".curr_item").css({"display":"block"});
+		                 map.clearMap();
+				 var startmarker = $(".selfloc_input_div",next_item).data("marker");
+				 var endmarker = $(".desloc_input_div",next_item).data("marker");
+                                 if(startmarker) startmarker.setMap(map);
+                                 if(endmarker) endmarker.setMap(map);
+				 if(startmarker && endmarker) {
+				     	drivingRoute(startmarker,endmarker);
+				 }
+				 map.setFitView();
+			  } else {
+			  }
+	    });
+
+	    $("#delRoute_div").click(function(){
+			  var curr_item =   $(".curr_item");
+			  var next_item = curr_item.next();
+			  var prev_item = curr_item.prev();
+			  var startmarker = null;
+			  var endmarker = null;
+			  
+			  if(next_item.hasClass("input_item")) {
+		                 map.clearMap();
+			         curr_item.removeClass("curr_item");
+                                 next_item.addClass("curr_item");
+				 $(".input_item").css({"display":"none"});
+				 $(".curr_item").css({"display":"block"});
+				 startmarker = $(".selfloc_input_div",next_item).data("marker");
+				 endmarker = $(".desloc_input_div",next_item).data("marker");
+				 curr_item.remove();
+			  } else if(prev_item.hasClass("input_item")){
+		                 map.clearMap();
+			         curr_item.removeClass("curr_item");
+                                 prev_item.addClass("curr_item");
+				 $(".input_item").css({"display":"none"});
+				 $(".curr_item").css({"display":"block"});
+				 startmarker = $(".selfloc_input_div",prev_item).data("marker");
+				 endmarker = $(".desloc_input_div",prev_item).data("marker");
+				 curr_item.remove();
+			  } else {
+			  }
+			 if(startmarker) startmarker.setMap(map);
+			 if(endmarker) endmarker.setMap(map);
+			 if(startmarker && endmarker) {
+				drivingRoute(startmarker,endmarker);
+			 }
+			 map.setFitView();
+			    
+	    });
    </script>
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=103e3fae6c781ad2da0587f2b04a2034"></script>
     <script>
@@ -181,7 +304,7 @@
 		}
 
 
-                function placeSearch(target,SCallback){
+                function placeSearch(target,pDiv,SCallback){
 		    var keywords = $(target).val();  
 		    if(keywords.length > 0 ) {
 			    var MSearch;
@@ -194,7 +317,7 @@
 				//关键字查询
 				MSearch.search(keywords, function(status, result){
 					if(status === 'complete' && result.info === 'OK'){
-						SCallback(result);
+						SCallback(result,pDiv);
 				        } else {
 						    $(target).next().html("");
 						    $(target).next().css({"display":"none"});
@@ -208,17 +331,17 @@
 		}
 
 
-		function bindAutoSearch(className,SCallback){
+		function bindAutoSearch(className,pDiv,SCallback){
 			if (navigator.userAgent.indexOf("MSIE") > 0) {  
-				$("."+className).bind("propertychange",function(){
+				$("."+className,pDiv).bind("propertychange",function(){
 			                        // autoSearch(this,autoComplete_callback);	
-						placeSearch(this,SCallback);
+						placeSearch(this,pDiv,SCallback);
 				});
 			}  
 			else {  
-				$("."+className).bind("input",function(){
+				$("."+className,pDiv).bind("input",function(){
 			                        //autoSearch(this,autoComplete_callback);	
-						placeSearch(this,SCallback);
+						placeSearch(this,pDiv,SCallback);
 				});
 			    
 			}  
@@ -234,7 +357,7 @@
 		}
 
 
-		function autoCompleteSelfLoc(data){
+		function autoCompleteSelfLoc(data,pDiv){
 			     //first remove the old tips
 			     $(".selfloc_result").html("");
 			     var pois = data.poiList.pois;
@@ -250,13 +373,13 @@
 				   poiElements.push(pElement);		  
 			     });
 
-			     $(".selfloc_result").html(poiElements);
-			     $(".selfloc_result").css({"display":"block"});
+			     $(".selfloc_result",pDiv).html(poiElements);
+			     $(".selfloc_result",pDiv).css({"display":"block"});
 			     //add this tips object to these elemetn dom
 			     poiElements.forEach(function(e,i){
-					$("#tip"+i).data("poi",pois[i]); 
+					$("#tip"+i,pDiv).data("poi",pois[i]); 
 			     });  
-			     $(".tip").click(function(){
+			     $(".tip",pDiv).click(function(){
 			             var poi = $(this).data("poi");
 				     var lngX = poi.location.getLng();
 		                     var latY = poi.location.getLat();
@@ -287,7 +410,6 @@
 				             }
 				     };
 				     var newMarker = new AMap.Marker(markerOption);
-				     $.m = this;
 				     $(this).parent().parent().data("marker",newMarker);
 				     newMarker.setMap(map);
     				     var aa = function (e) {infoWindow.open(map, newMarker.getPosition());};
@@ -305,9 +427,9 @@
 			     });
 
 		}
-		function autoCompleteDesLoc(data){
+		function autoCompleteDesLoc(data,pDiv){
 			     //first remove the old tips
-			     $(".desloc_result").html("");
+			     $(".desloc_result",pDiv).html("");
 			     var pois = data.poiList.pois;
 			     //
 			     //add the tips
@@ -321,13 +443,13 @@
 				   poiElements.push(pElement);		  
 			     });
 
-			     $(".desloc_result").html(poiElements);
-			     $(".desloc_result").css({"display":"block"});
+			     $(".desloc_result",pDiv).html(poiElements);
+			     $(".desloc_result",pDiv).css({"display":"block"});
 			     //add this tips object to these elemetn dom
 			     poiElements.forEach(function(e,i){
-					$("#tip"+i).data("poi",pois[i]); 
+					$("#tip"+i,pDiv).data("poi",pois[i]); 
 			     });  
-			     $(".tip").click(function(){
+			     $(".tip",pDiv).click(function(){
 			             var poi = $(this).data("poi");
 				     var infoWindow = new AMap.InfoWindow({
 						content:"<h3><font color=\"#00a6ac\">  "  + poi.name + "</font></h3>" + TipContents(poi.type, poi.address, poi.tel),
@@ -400,11 +522,8 @@
                               map.addControl(toolBar);
                         });
                  	//加载输入提示插件  
-		 	map.plugin(["AMap.Autocomplete"], function() {  
-		        bindAutoSearch("selfloc_input",autoCompleteSelfLoc);
-		        bindAutoSearch("desloc_input",autoCompleteDesLoc);
-		    }); 
-                        			
+		        bindAutoSearch("selfloc_input",$(".curr_item"),autoCompleteSelfLoc);
+		        bindAutoSearch("desloc_input",$(".curr_item"),autoCompleteDesLoc);
 		})(window);
     </script>
 </body>
