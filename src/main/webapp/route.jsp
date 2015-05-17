@@ -62,6 +62,7 @@
 		  <div id="mapDiv">
 			  <div id="mapContainer">
 			      <div id="couponGet"></div>
+			      <div id="routeResult"></div>
                           </div>
 		  </div>
                   <div id="bottomTitle"></div>
@@ -84,34 +85,140 @@
    </script>
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=103e3fae6c781ad2da0587f2b04a2034"></script>
     <script>
-
-                function placeSearch(){
-		    var MSearch;
-		    AMap.service(["AMap.PlaceSearch"], function() {       
-		        MSearch = new AMap.PlaceSearch({ //构造地点查询类
-		            pageSize:10,
-		            pageIndex:1,
-		            city:"021" //城市
-		        });
-		        //关键字查询
-		        MSearch.search('东方明珠', function(status, result){
+	function drivingRoute(startmarker,endmarker) {
+			var MDrive;
+			AMap.service(["AMap.Driving"], function() {
+				var DrivingOption = {
+					//驾车策略，包括 LEAST_TIME，LEAST_FEE, LEAST_DISTANCE,REAL_TRAFFIC
+					policy: AMap.DrivingPolicy.LEAST_TIME 
+				};        
+		        MDrive = new AMap.Driving(DrivingOption); //构造驾车导航类 
+		        //根据起终点坐标规划驾车路线
+		        MDrive.search(startmarker.getPosition(), endmarker.getPosition(), function(status, result){
 		        	if(status === 'complete' && result.info === 'OK'){
-		        		keywordSearch_CallBack(result);
+		        		showRouteResult(result);
+		        	}else{
+		        		alert(result);
 		        	}
 		        }); 
 		    });
 		}
 
+		var driveLine = null;
+		var currPathLine = null;
+		var steps = null;
 
-		function bindAutoSearch(className,autoComplete_callback){
+			//绘制驾车导航路段
+		function driveDrawFoldline(num) {
+			var drawpath1 = new Array();
+			drawpath1 = steps[num].path;
+			if(currPathLine!= null) {
+				currPathLine.setMap(null);
+			}
+			currPathLine = new AMap.Polyline({
+					map: map,
+					path: drawpath1,
+					strokeColor: "#FF3030",
+					strokeOpacity: 0.9,
+					strokeWeight: 4,
+					strokeDasharray: [10, 5]
+				});
+		
+			map.setFitView(currPathLine);
+		}
+
+
+
+		//绘制驾车导航路线
+		function showRouteResult(result) {
+			steps = result.routes[0].steps;
+			var route_count = steps.length;
+			//行车距离（米）
+		        var distance = result.routes[0].distance;
+			var route_text = "";
+			var drawpath = new Array(); 
+			for(var s=0; s<steps.length; s++) {
+				route_text += "<div id=\"routeStep"+s+"\" onMouseover=\"driveDrawFoldline('" + s + "')\">" + s +"." +steps[s].instruction  + "</div>";
+				var plength = steps[s].path.length;
+				for (var p=0; p < plength; p++) {
+					drawpath.push(steps[s].path[p]);
+				}
+			}
+			//输出行车路线指示
+			//document.getElementById("result").innerHTML = route_text;
+			$("#routeResult").html(route_text);
+			//remove the old one
+			if(currPathLine!=null) 
+			   currPathLine.setMap(null);
+		        if(driveLine!= null)
+				driveLine.setMap(null);
+			driveLine = new AMap.Polyline({
+				map: map,
+				path: drawpath,
+				strokeColor: "#9400D3",
+				strokeOpacity: 0.7,
+				strokeWeight: 4,
+				strokeDasharray: [10, 5]
+			});
+			map.setFitView();
+		}
+
+
+
+                //infowindow显示内容
+		function TipContents(type, address, tel) {  //窗体内容
+		    if (type == "" || type == "undefined" || type == null || type == " undefined" || typeof type == "undefined") {
+		        type = "暂无";
+		    }
+		    if (address == "" || address == "undefined" || address == null || address == " undefined" || typeof address == "undefined") {
+		        address = "暂无";
+		    }
+		    if (tel == "" || tel == "undefined" || tel == null || tel == " undefined" || typeof address == "tel") {
+		        tel = "暂无";
+		    }
+		    var str = "  地址：" + address + "<br />  电话：" + tel + " <br />  类型：" + type;
+		    return str;
+		}
+
+
+                function placeSearch(target,SCallback){
+		    var keywords = $(target).val();  
+		    if(keywords.length > 0 ) {
+			    var MSearch;
+			    AMap.service(["AMap.PlaceSearch"], function() {       
+				MSearch = new AMap.PlaceSearch({ //构造地点查询类
+				    pageSize: 100,
+				    pageIndex:1,
+				    city:"0010" //城市
+				});
+				//关键字查询
+				MSearch.search(keywords, function(status, result){
+					if(status === 'complete' && result.info === 'OK'){
+						SCallback(result);
+				        } else {
+						    $(target).next().html("");
+						    $(target).next().css({"display":"none"});
+					}
+				}); 
+			    });
+		    } else {
+			    $(target).next().html("");
+			    $(target).next().css({"display":"none"});
+		    }
+		}
+
+
+		function bindAutoSearch(className,SCallback){
 			if (navigator.userAgent.indexOf("MSIE") > 0) {  
 				$("."+className).bind("propertychange",function(){
-			                         autoSearch(this,autoComplete_callback);	
+			                        // autoSearch(this,autoComplete_callback);	
+						placeSearch(this,SCallback);
 				});
 			}  
 			else {  
 				$("."+className).bind("input",function(){
-			                         autoSearch(this,autoComplete_callback);	
+			                        //autoSearch(this,autoComplete_callback);	
+						placeSearch(this,SCallback);
 				});
 			    
 			}  
@@ -126,96 +233,148 @@
 			}  
 		}
 
-                
-               //自己位置输入提示  
-		function autoSearch(target,autoComplete_callback) {   
-		    var keywords = $(target).val();  
-		    if(keywords.length > 0 ) {
-		    var auto;    
-		    var autoOptions = {  
-			pageIndex:1,  
-			pageSize:10,  
-			city: "0010" //城市，默认全国  
-		    };  
-		    auto = new AMap.Autocomplete(autoOptions);  
-		    //查询成功时返回查询结果  
-		    AMap.event.addListener(auto, "complete", autoComplete_callback);  
-		    auto.search(keywords);  
-		    } else {
-			    $(target).next().html("");
-			    $(target).next().css({"display":"none"});
-		    }
-		} 
 
 		function autoCompleteSelfLoc(data){
-			//first remove the old tips
-			$(".selfloc_result").html("");
-			if(data.info == "OK" && data.count > 0 ) {
-                             var tips = data.tips;
+			     //first remove the old tips
+			     $(".selfloc_result").html("");
+			     var pois = data.poiList.pois;
 			     //
 			     //add the tips
-			     var tipElements = [];
-			     tips.forEach(function(tip,index){
-			           try {
-				   var tElement = "<div id=\"tip"+index+"\" class=\"tip\"><pre>"+tip.name+"  </pre><span style=\"color:#ccc\">"+tip.district+"</span></div>";
+			     var poiElements = [];
+			     pois.forEach(function(poi,index){
+				   try {
+				   var pElement = "<div id=\"tip"+index+"\" class=\"tip\"><pre>"+poi.name+"  </pre><pre style=\"color:#ccc\">"+poi.address+"</pre></div>";
 				   } catch(e) {
 				      console.log(e); 
 				   }
-			           tipElements.push(tElement);		  
-		             });
+				   poiElements.push(pElement);		  
+			     });
 
-			     $(".selfloc_result").html(tipElements);
+			     $(".selfloc_result").html(poiElements);
 			     $(".selfloc_result").css({"display":"block"});
 			     //add this tips object to these elemetn dom
-			     tipElements.forEach(function(e,i){
-			         	$("#tip"+i).data("tip",tips[i]); 
+			     poiElements.forEach(function(e,i){
+					$("#tip"+i).data("poi",pois[i]); 
 			     });  
 			     $(".tip").click(function(){
-			             //$.thisTip = $(this).data("tip");
-				     $(this).parent().prev().data("selfloc",$(this).data("tip"));
+			             var poi = $(this).data("poi");
+				     var lngX = poi.location.getLng();
+		                     var latY = poi.location.getLat();
+				     var infoWindow = new AMap.InfoWindow({
+						content:"<h3><font color=\"#00a6ac\">  "  + poi.name + "</font></h3>" + TipContents(poi.type, poi.address, poi.tel),
+						size:new AMap.Size(250, 0),
+						autoMove:true, 
+						offset:new AMap.Pixel(0,-30)
+				    });
+				     //first get the previous marker
+				     //console.log($(this).parent().parent().attr("id"));
+				     var prevMarker = $(this).parent().parent().data("marker");
+				     if(prevMarker) {
+				             prevMarker.setMap(null); 
+				     }
+				     var sicon = new AMap.Icon({
+						image: "http://cache.amap.com/lbs/static/jsdemo002.png",
+						size:new AMap.Size(44,44),
+						imageOffset: new AMap.Pixel(-334, -180)
+				     });
+				     var markerOption = {
+					map:map,
+					icon:sicon,
+					position:new AMap.LngLat(lngX, latY),
+					offset : {
+							x : -16,
+							y : -40
+				             }
+				     };
+				     var newMarker = new AMap.Marker(markerOption);
+				     $.m = this;
+				     $(this).parent().parent().data("marker",newMarker);
+				     newMarker.setMap(map);
+    				     var aa = function (e) {infoWindow.open(map, newMarker.getPosition());};
+				     AMap.event.addListener(newMarker,"mouseover",aa);
+                                     var startmarker = newMarker;
+                                     var endmarker = $(this).parent().parent().next().data("marker");
+				     if(startmarker && endmarker) {
+				     	drivingRoute(startmarker,endmarker);
+				     }
+				     map.setFitView();
 				     $(this).parent().prev().val($("pre",this).html().trim());
-				     //$(this).parent().prev().data("tip",thisTip);
-			     	     $(this).parent().html("");
-			     	     $(this).parent().css({"display":"none"});
-			             //console.log($(this).val()); 
+				     $(this).parent().html("");
+				     $(this).parent().css({"display":"none"});
+				     //marker.set
 			     });
 
-			} else {
-			
-			}
 		}
 		function autoCompleteDesLoc(data){
-			//first remove the old tips
-			$(".desloc_result").html("");
-			if(data.info == "OK" && data.count > 0 ) {
-                             var tips = data.tips;
+			     //first remove the old tips
+			     $(".desloc_result").html("");
+			     var pois = data.poiList.pois;
 			     //
 			     //add the tips
-			     var tipElements = [];
-			     tips.forEach(function(tip,index){
-			           try {
-				   var tElement = "<div id=\"dtip"+index+"\" class=\"tip\"><pre>"+tip.name+"  </pre><span style=\"color:#ccc\">"+tip.district+"</span></div>";
+			     var poiElements = [];
+			     pois.forEach(function(poi,index){
+				   try {
+				   var pElement = "<div id=\"tip"+index+"\" class=\"tip\"><pre>"+poi.name+"  </pre><pre style=\"color:#ccc\">"+poi.address+"</pre></div>";
 				   } catch(e) {
 				      console.log(e); 
 				   }
-			           tipElements.push(tElement);		     
-		             });
-			     $(".desloc_result").html(tipElements);
-			     $(".desloc_result").css({"display":"block"});
-			     tipElements.forEach(function(e,i){
-			         	$("#dtip"+i).data("tip",tips[i]); 
-			     });  
-			     $(".tip").click(function(){
-				     $(this).parent().prev().data("desloc",$(this).data("tip"));
-				     $(this).parent().prev().val($("pre",this).html().trim());
-			     	     $(this).parent().html("");
-			     	     $(this).parent().css({"display":"none"});
-			             //console.log($(this).val()); 
+				   poiElements.push(pElement);		  
 			     });
 
-			} else {
-			
-			}
+			     $(".desloc_result").html(poiElements);
+			     $(".desloc_result").css({"display":"block"});
+			     //add this tips object to these elemetn dom
+			     poiElements.forEach(function(e,i){
+					$("#tip"+i).data("poi",pois[i]); 
+			     });  
+			     $(".tip").click(function(){
+			             var poi = $(this).data("poi");
+				     var infoWindow = new AMap.InfoWindow({
+						content:"<h3><font color=\"#00a6ac\">  "  + poi.name + "</font></h3>" + TipContents(poi.type, poi.address, poi.tel),
+						size:new AMap.Size(250, 0),
+						autoMove:true, 
+						offset:new AMap.Pixel(0,-30)
+				    });
+
+
+				     var lngX = poi.location.getLng();
+		                     var latY = poi.location.getLat();
+				     //first get the previous marker
+				     var prevMarker = $(this).parent().parent().data("marker");
+				     if(prevMarker) {
+				             prevMarker.setMap(null); 
+				     }
+				    var eicon = new AMap.Icon({
+						image: "http://cache.amap.com/lbs/static/jsdemo002.png",
+						size:new AMap.Size(44,44),
+						imageOffset: new AMap.Pixel(-334, -134)
+				     });
+
+				     var markerOption = {
+					map:map,
+					icon:eicon,
+					position:new AMap.LngLat(lngX, latY),
+					offset : {
+						x : -16,
+						y : -40
+				          }
+				     };
+				     var newMarker = new AMap.Marker(markerOption);
+				     $(this).parent().parent().data("marker",newMarker);
+				     newMarker.setMap(map);
+    				     var aa = function (e) {infoWindow.open(map, newMarker.getPosition());};
+				     AMap.event.addListener(newMarker,"mouseover",aa);
+                                     var startmarker = $(this).parent().parent().prev().data("marker");
+                                     var endmarker = newMarker;
+				     if(startmarker && endmarker)
+				     	drivingRoute(startmarker,endmarker);
+				     map.setFitView();
+				     //marker.set
+				     $(this).parent().prev().val($("pre",this).html().trim());
+				     $(this).parent().html("");
+				     $(this).parent().css({"display":"none"});
+			     });
+
 		}
 
 	     	var marker = new Array();  
@@ -242,7 +401,6 @@
                         });
                  	//加载输入提示插件  
 		 	map.plugin(["AMap.Autocomplete"], function() {  
-			//判断是否IE浏览器  
 		        bindAutoSearch("selfloc_input",autoCompleteSelfLoc);
 		        bindAutoSearch("desloc_input",autoCompleteDesLoc);
 		    }); 
