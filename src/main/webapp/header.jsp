@@ -14,7 +14,9 @@
         import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="/static/header.css" />
+<link rel="stylesheet" type="text/css" href="/static/tooltipster.css" />
 <script type="text/javascript" src="/static/lib.js"></script>
+<script type="text/javascript" src="/static/jquery.tooltipster.min.js"></script>
 <div id="header">
     
      <div id="app_title"></div>
@@ -99,6 +101,10 @@
 	     $("#menu_5").click(function(){
 		 console.log("menu_5");
 		 window.location = "route.jsp";
+	     });
+	     $("#menu_6").click(function(){
+		 console.log("menu_6");
+		 window.location = "interest.jsp";
 	     });
   });
 </script>

@@ -79,6 +79,14 @@ div#indexRightBar {
      width:100%;
      height:44px;
 }
+
+#rb_login_submit_button {
+     width:101px;
+     height:31px;
+     position:absolute;
+     bottom:-43px;
+     background:url(/static/images/index_rightB_login.png) no-repeat center center;
+}
 #joinAction_1 {
    float:left;
    width:44px;

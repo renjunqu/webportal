@@ -70,6 +70,7 @@
                                         获取验证码
                                   </div>
                              </div>
+                             <div id="rb_login_submit_button" class="horizon_center_align"></div>
                        </div> 
                 </div>
              </div>

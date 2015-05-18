@@ -40,8 +40,8 @@
 		  <div id="inputDiv">
                            <div id="inputContainer">
 				  <div id="inputDivNav">
-					  <div id="prevRoute"> Prev </div>
-					  <div id="nextRoute"> Next </div>
+					  <div id="prevRoute" class="tooltip" title="前一个路径规划"></div>
+					  <div id="nextRoute" class="tooltip" title="下一个路径规划"></div>
 				  </div>
                                   <div class="input_item curr_item">
 					   <div class="selfloc_input_div">
@@ -64,8 +64,8 @@
 					   </div>
                                    </div>
                                    <div id="inputAction" >
-                                        <div id="addRoute_div"></div>
-                                        <div id="delRoute_div">-</div>
+                                        <div id="addRoute_div" title="增加一个出行计划" class="tooltip"></div>
+                                        <div id="delRoute_div" title="删除本次出行计划" class="tooltip" class="vertical_center_align"></div>
                                         <pre>确     定</pre>
                                    </div>
                            </div>
@@ -93,7 +93,7 @@
             appTitleTop = appTitleTop.replace("px","");
             appTitleTop = appTitleTop - 20;
             $("#app_title").css({"top":appTitleTop + "px"});
-
+            $(".tooltip").tooltipster();
 	    $("#addRoute_div").click(function(){
                    var newRouteDivStr = "<div class=\"input_item\">"+
 		                            "<div class=\"selfloc_input_div\">" +  
@@ -124,6 +124,7 @@
 		//unbindAutoSearch("desloc_input");
 		bindAutoSearch("selfloc_input",newItem,autoCompleteSelfLoc);
 		bindAutoSearch("desloc_input",newItem,autoCompleteDesLoc);
+                $("#prevRoute").css({"display":"block"});
 		map.clearMap();
 	    });
 
@@ -143,6 +144,13 @@
 				 if(startmarker && endmarker) {
 				     	drivingRoute(startmarker,endmarker);
 				 }
+                                 var prev_prev_item = $(".curr_item").prev();
+                                 if(prev_prev_item.hasClass("input_item")) {
+                                 
+                                 } else {
+                                     $("#prevRoute").css({"display":"none"});
+                                 }
+                                 $("#nextRoute").css({"display":"block"});
 				 map.setFitView();
 			  } else {
 			  }
@@ -165,6 +173,13 @@
 				 if(startmarker && endmarker) {
 				     	drivingRoute(startmarker,endmarker);
 				 }
+                                 var next_next_item = $(".curr_item").next();
+                                 if(next_next_item.hasClass("input_item")) {
+                                 
+                                 } else {
+                                     $("#nextRoute").css({"display":"none"});
+                                 }
+                                 $("#prevRoute").css({"display":"block"});
 				 map.setFitView();
 			  } else {
 			  }
@@ -197,6 +212,18 @@
 				 curr_item.remove();
 			  } else {
 			  }
+                         var new_curr_item_prev = $(".curr_item").prev();
+                         var new_curr_item_next = $(".curr_item").next();
+                         if(new_curr_item_prev.hasClass("input_item")) {
+                                     $("#prevRoute").css({"display":"block"});
+                         } else {
+                                     $("#prevRoute").css({"display":"none"});
+                         }
+                         if(new_curr_item_next.hasClass("input_item")) {
+                                     $("#nextRoute").css({"display":"block"});
+                         } else {
+                                     $("#nextRoute").css({"display":"none"});
+                         }
 			 if(startmarker) startmarker.setMap(map);
 			 if(endmarker) endmarker.setMap(map);
 			 if(startmarker && endmarker) {

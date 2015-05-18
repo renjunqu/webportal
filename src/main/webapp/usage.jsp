@@ -32,7 +32,7 @@
      <div id="main">
 	     <div class="center_align" id="usage_show">
              </div>
-	     <div id="usage_navbar">
+	     <div id="usage_navbar" class="vertical_center_align">
 		     <div id="nav_1"></div>
 		     <div id="nav_2"></div>
 		     <div id="nav_3"></div>
@@ -57,9 +57,9 @@
             appTitleTop = appTitleTop - 20;
             $("#app_title").css({"top":appTitleTop + "px"});
 	    $("[id^=nav_]").click(function(e){
-		    $(prev_step).css({"background-color":"#0cc"});
+		    $(prev_step).css({"background-color":"#f0e4cc"});
 		    prev_step = e.target;
-		    $(prev_step).css({"background-color":"#00c"});
+		    $(prev_step).css({"background-color":"#e5c267"});
 		    var id = $(prev_step).attr("id");
 		    id = id.replace("nav_","usage");
 		    $("#usage_show").css({"background":"url('/static/images/"+id+".png') no-repeat",
