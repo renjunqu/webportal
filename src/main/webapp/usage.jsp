@@ -31,12 +31,12 @@
      <%@ include file="header.jsp"%> 
      <div id="main">
 	     <div class="center_align" id="usage_show">
-             </div>
-	     <div id="usage_navbar" class="vertical_center_align">
-		     <div id="nav_1"></div>
-		     <div id="nav_2"></div>
-		     <div id="nav_3"></div>
-		     <div id="nav_4"></div>
+		     <div id="usage_navbar" class="vertical_center_align">
+			     <div id="nav_1"></div>
+			     <div id="nav_2"></div>
+			     <div id="nav_3"></div>
+			     <div id="nav_4"></div>
+		     </div>
              </div>
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
