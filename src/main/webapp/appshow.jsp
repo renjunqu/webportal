@@ -30,8 +30,7 @@
      </script>
      <%@ include file="header.jsp"%> 
      <div id="main">
-          <div style="position:relative;height:200px;"></div>
-          <div style="position:absolute;top:200px;bottom:0px;left:0px;right:0px;">
+          <div id="main_content" class="horizon_center_align">
 		  <div style="height:100%;width:50%;position:absolute;left:0px;">
 			 <div id="appShow_phone1">
 			 </div>
@@ -40,27 +39,8 @@
 		  </div>
 		  <div style="height:100%;width:50%;position:absolute;right:0px;">
                        <div id="appShow_actions" class="center_align">
-                               <div id="appShow_title"></div>
-			       <div id="appShow_login">
-				   <div id="lrow_1">已有账号? <span style="color:#50b3b1;cursor:pointer;">立即登录</span></div>
-				   <div id="lrow_2">
-					   <div id="appShow_icon1"></div>
-					   <div id="appShow_input1">
-						   <input type="text" class="thin_input" placeholder="请输入手机号" style="width:150px;height:30px;"></input>
-					   </div>
-				   </div>
-				   <div id="lrow_3">
-					   <div id="appShow_icon2"></div>
-					   <div id="appShow_input2">
-						   <input type="text" class="thin_input" placeholder="请输入验证码" style="width:150px;height:30px;"></input>
-					   </div>
-					   <div id="appShow_getCode">
-						   获取验证码
-					   </div>
-				   </div>
-				   <div id="lrow_4">
-					  立即注册
-				   </div>
+                               <div id="appShow_title" class="horizon_center_align"></div>
+			       <div id="appShow_code">
 			       </div>
                        </div>
 		  </div>
@@ -69,18 +49,6 @@
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
        $(function(){
-            $("#header").addClass("bottomShadow");
-            var headerHeight = $("#header").height();
-            headerHeight -=20;
-            $("#header").height(headerHeight);
-            var mainTop = $("#main").css("top");
-            mainTop = mainTop.replace("px","");
-            mainTop = mainTop - 20;
-            $("#main").css({"top":mainTop+"px"});
-            var appTitleTop = $("#app_title").css("top");
-            appTitleTop = appTitleTop.replace("px","");
-            appTitleTop = appTitleTop - 20;
-            $("#app_title").css({"top":appTitleTop + "px"});
         });
    </script>
 </body>

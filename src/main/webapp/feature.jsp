@@ -34,40 +34,28 @@
              <div id="feature_title_content" class="center_align">
              </div>
         </div>
-        <div id="feature_show">
-		<div style="position:absolute;top:0px;left:0px;width:50%;height:50%;">
-		    <div id="feature_1" class="center_align">
-		    </div>
+		<div id="feature_show" class="horizon_center_align">
+			<div style="position:absolute;top:0px;left:0px;width:50%;height:50%;">
+			    <div id="feature_1" class="center_align">
+			    </div>
+			</div>
+			<div style="position:absolute;top:0px;right:0px;width:50%;height:50%;">
+			    <div id="feature_2" class="center_align">
+			    </div>
+			</div>
+			<div style="position:absolute;bottom:0px;left:0px;width:50%;height:50%;">
+			    <div id="feature_3" class="center_align">
+			    </div>
+			</div>
+			<div style="position:absolute;bottom:0px;right:0px;width:50%;height:50%;">
+			    <div id="feature_4" class="center_align">
+			    </div>
+			</div>
 		</div>
-		<div style="position:absolute;top:0px;right:0px;width:50%;height:50%;">
-		    <div id="feature_2" class="center_align">
-		    </div>
-		</div>
-		<div style="position:absolute;bottom:0px;left:0px;width:50%;height:50%;">
-		    <div id="feature_3" class="center_align">
-		    </div>
-		</div>
-		<div style="position:absolute;bottom:0px;right:0px;width:50%;height:50%;">
-		    <div id="feature_4" class="center_align">
-		    </div>
-		</div>
-        </div>
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
        $(function(){
-            $("#header").addClass("bottomShadow");
-            var headerHeight = $("#header").height();
-            headerHeight -=20;
-            $("#header").height(headerHeight);
-            var mainTop = $("#main").css("top");
-            mainTop = mainTop.replace("px","");
-            mainTop = mainTop - 20;
-            $("#main").css({"top":mainTop+"px"});
-            var appTitleTop = $("#app_title").css("top");
-            appTitleTop = appTitleTop.replace("px","");
-            appTitleTop = appTitleTop - 20;
-            $("#app_title").css({"top":appTitleTop + "px"});
         });
    </script>
 </body>

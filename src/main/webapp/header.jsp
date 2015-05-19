@@ -67,6 +67,23 @@
 <script> 
    
    $( function() {
+		   if(currMenu !="menu_1") {
+			    //add spec view to the main content, if not the index.jsp
+			    $("#header").addClass("bottomShadow");
+			    var headerHeight = $("#header").height();
+			    headerHeight -=60;
+			    $("#header").height(headerHeight);
+			    var mainTop = $("#main").css("top");
+			    mainTop = mainTop.replace("px","");
+			    mainTop = mainTop - 60;
+			    $("#main").css({"top":mainTop+"px"});
+			    var appTitleTop = $("#app_title").css("top");
+			    appTitleTop = appTitleTop.replace("px","");
+			    appTitleTop = appTitleTop - 40;
+			    $("#app_title").css({"top":appTitleTop + "px"});
+                            $("#header_web_b").css({"display":"none"});
+                             
+		   }
 	     $("[id^=menu_]").each(function(){
                         console.log("hello"+$(this).attr("id"));
                    if($(this).attr("id")!=currMenu) {

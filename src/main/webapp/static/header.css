@@ -1,5 +1,6 @@
 div#header {
   width:100%;
+  min-width:900px;
   height:126px;
   background-color:#fff;
   position:absolute;
@@ -11,12 +12,12 @@ div#header {
 
 div#app_title {
   height:46px;
-  width:118px;
+  width:151px;
   position:absolute;
   left:16px;
   top:40px;
-  background:url(/static/images/app_title.png) no-repeat;
-  background-size:118px 46px;
+  background:url(/static/images/soda.png) no-repeat;
+  background-size:151px 46px;
   background-position:0px 0px;
   z-index:50;
 }

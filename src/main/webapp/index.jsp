@@ -30,50 +30,50 @@
      </script>
      <%@ include file="header.jsp"%> 
      <div id="main">
-             <video id="indexVideo" style=" width:100%    !important;height:auto   !important;position:absolute;bottom:0px;" controls>
-                   <source src="/static/video/index.mp4" type="video/mp4">
-                   "Your browser does not support html5 video, please visit: "<a href="http://www.baidu.com">www.baidu.com</a>
-             </video>
-             <div id="indexRightBar" >
-                <div id="resizeBar"></div>
-                <div style="position:absolute;left:5px;right:0px;top:0px;height:100%;overflow:hidden;">
-                       <div id="rightBar_close"></div> 
-                       <div id="rightBar_joinSuda">
-                            <div id="rightBar_joinTitle"></div>
-                            <div id="rightBar_joinAction">
-                                 <div id="joinAction_1">
-                                 </div>
-                                 <div id="joinAction_2">
-                                        122
-                                 </div>
-                                 <div id="joinAction_3">
-                                 </div>
-                                 <div id="joinAction_4">
-                                        652
-                                 </div>
-                                 <div style="clear:both;"></div>
-                            </div>
-                       </div> 
-                       <div id="rightBar_login">
-                             <div style="height:36px;width:265px;position:absolute;top:0px">
-                                  <div id="rb_login_top_icon" style="float:left;"></div>
-                                  <div id="rb_login_mobileNo_input" style="float:left;">
-                                       <input type="text" placeholder="手机号" class="thin_input"></input>
-                                  </div>
-                             </div>
-                             <div style="height:36px;width:265px;position:absolute;bottom:0px">
-                                  <div id="rb_login_bottom_icon" style="float:left;"></div>
-                                  <div id="rb_login_bottom_code_input" style="float:left;">
-                                       <input type="text" placeholder="验证码" class="thin_input"></input>
-                                  </div>
-                                  <div id="rb_login_bottom_code_b" style="float:left;">
-                                        获取验证码
-                                  </div>
-                             </div>
-                             <div id="rb_login_submit_button" class="horizon_center_align"></div>
-                       </div> 
+		     <video id="indexVideo" style=" width:100%    !important;height:auto   !important;position:absolute;top:0px;" controls>
+			   <source src="http://cdn.futuremove.cn/video/index.mp4" type="video/mp4">
+			   "Your browser does not support html5 video, please visit: "<a href="http://www.baidu.com">www.baidu.com</a>
+		     </video>
+		     <div id="indexRightBar" >
+			<div id="resizeBar"></div>
+			<div style="position:absolute;left:5px;right:0px;top:0px;height:100%;overflow:hidden;">
+			       <div id="rightBar_close"></div> 
+			       <div id="rightBar_joinSuda">
+				    <div id="rightBar_joinTitle"></div>
+				    <div id="rightBar_joinAction">
+					 <div id="joinAction_1">
+					 </div>
+					 <div id="joinAction_2">
+						122
+					 </div>
+					 <div id="joinAction_3">
+					 </div>
+					 <div id="joinAction_4">
+						652
+					 </div>
+					 <div style="clear:both;"></div>
+				    </div>
+			       </div> 
+			       <div id="rightBar_login">
+				     <div style="height:36px;width:265px;position:absolute;top:0px">
+					  <div id="rb_login_top_icon" style="float:left;"></div>
+					  <div id="rb_login_mobileNo_input" style="float:left;">
+					       <input type="text" placeholder="手机号" class="thin_input"></input>
+					  </div>
+				     </div>
+				     <div style="height:36px;width:265px;position:absolute;bottom:0px">
+					  <div id="rb_login_bottom_icon" style="float:left;"></div>
+					  <div id="rb_login_bottom_code_input" style="float:left;">
+					       <input type="text" placeholder="验证码" class="thin_input"></input>
+					  </div>
+					  <div id="rb_login_bottom_code_b" style="float:left;">
+						获取验证码
+					  </div>
+				     </div>
+				     <div id="rb_login_submit_button" class="horizon_center_align"></div>
+			       </div> 
+			</div>
                 </div>
-             </div>
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>

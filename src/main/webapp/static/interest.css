@@ -5,7 +5,7 @@
 #main_content {
 	position:absolute;
         background:#fff;
-        width:907px;
+        width:1024px;
         height:435px;
         top:55px;
         border-radius:25px;
@@ -94,7 +94,7 @@ div[id$=_input_div] input{
         width:50%;
         height:100%;
         border:0px solid;
-        background:url(/static/images/download_our_app.png) no-repeat;
+        background:url(/static/images/portal_code.png) no-repeat;
         background-position:center center;
     
 }
@@ -105,75 +105,33 @@ div[id$=_input_div] input{
  width:100%;
  height:193px;
  background:#e5c267;
+ overflow:visible;
+}
+#info_div_content  {
+ position:absolute;
+ top:0px;
+ width:1024px;
+ height:193px;
+ background:url(/static/images/info_div.png) no-repeat center center;
 }
 
-
-#ourinfo {
-	position:absolute;
-        top:0px;
-        bottom:0px;
-        width:920px;
-}
-
-#contact_info {
-	position:absolute;
-        height:108px;
-        top:41px;
-        left:0px;
-        width:456px;
-}
-
-
-#contact_info {
-   width:245px;
-   height:105px;
-   background:url(/static/images/contact_info.png) no-repeat;
-   background-size:245px 105px;
-   background-position:0px 0px;
-}
-
-#our_links {
-	position:absolute;
-        right:0px;
-        height:108px;
-        top:41px;
-        width:456px;
-}
-
-.info_link1 {
-text-decoration:none;
-color:white;
-float:left;
-height:49px;
-width:114px;
-cursor:pointer;
-font-size:15px;
-}
-.info_link2 {
-float:left;
-text-decoration:none;
-color:white;
-float:left;
-height:49px;
-width:148px;
-cursor:pointer;
-}
-
-.info_link2 pre {
-  display:inline;
-  font-size:16px;
-  margin:0px;
-  padding:0px;
-  font-size:18px;
-
+#portal_addr {
+ position:absolute;
+ top:50px;
+ left:761px; 
+ color:#fff;
+ font-size:15px;
+ cursor:pointer;
 }
 
 
 #partner_icons {
-	position:absolute;
+    position:absolute;
         bottom:20px;
         width:351px;
         height:30px;
+        left:622px;
+        top:131px;
 }
 
 #weibo_icon {
@@ -185,39 +143,40 @@ cursor:pointer;
        height:24px;
        left:0px;
 }
-#weixin_icon { 
-       position:absolute; 
-       cursor:pointer; 
+#weixin_icon {
+       position:absolute;
+       cursor:pointer;
        background:url(/static/images/weixin.png) no-repeat;
        background-size:29px 24px;
        width:29px;
        height:24px;
        left:83px;
 }
-#facebook_icon { 
-       position:absolute; 
-       cursor:pointer; 
+#facebook_icon {
+       position:absolute;
+       cursor:pointer;
        background:url(/static/images/facebook.png) no-repeat;
        background-size:29px 24px;
        width:29px;
        height:24px;
        left:166px;
 }
-#flicker_icon { 
-       position:absolute; 
-       cursor:pointer; 
+#flicker_icon {
+       position:absolute;
+       cursor:pointer;
        background:url(/static/images/flicker.png) no-repeat;
        background-size:29px 24px;
        width:29px;
        height:24px;
        left:245px;
 }
-#linkedin_icon { 
-       position:absolute; 
-       cursor:pointer; 
+#linkedin_icon {
+       position:absolute;
+       cursor:pointer;
        background:url(/static/images/linkedin.png) no-repeat;
        background-size:29px 24px;
        width:29px;
        height:24px;
        left:325px;
 }
+

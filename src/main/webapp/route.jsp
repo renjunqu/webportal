@@ -81,18 +81,6 @@
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
-            $("#header").addClass("bottomShadow");
-            var headerHeight = $("#header").height();
-            headerHeight -=20;
-            $("#header").height(headerHeight);
-            var mainTop = $("#main").css("top");
-            mainTop = mainTop.replace("px","");
-            mainTop = mainTop - 20;
-            $("#main").css({"top":mainTop+"px"});
-            var appTitleTop = $("#app_title").css("top");
-            appTitleTop = appTitleTop.replace("px","");
-            appTitleTop = appTitleTop - 20;
-            $("#app_title").css({"top":appTitleTop + "px"});
             $(".tooltip").tooltipster();
 	    $("#addRoute_div").click(function(){
                    var newRouteDivStr = "<div class=\"input_item\">"+

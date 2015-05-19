@@ -47,49 +47,25 @@
 			 <div id="app_download"></div>
 	       </div>
                <div id="info_div">
-		       <div id="ourinfo" class="horizon_center_align">
-			    <div id="contact_info">
-                                  <div class="center_align">
-                                  </div>
-			    </div>
-			    <div id="our_links">
-                                  <div style="height:49px;">
-					  <a style="display:block;" class="info_link1" href="www.baidu.com">HOME</a>
-					  <a style="display:block;" class="info_link1">OUTLETS</a>
-					  <a style="display:block;" class="info_link1">NEWS</a>
-					  <a style="display:block;" class="info_link1">PRICE</a>
-                                  </div>
-                                  <div style="height:49px;">
-					  <a style="display:block;" class="info_link2"><pre>MEDIA NEWS</pre></a>
-					  <a style="display:block;" class="info_link2"><pre>ABOUT US</pre></a>
-                                  </div>
-			    </div>
-		       </div>
-               </div>
-	       <div id="partner_icons" class="horizon_center_align">
-                     <div id="weibo_icon" class="vertical_center_align"></div>
-                     <div id="weixin_icon" class="vertical_center_align"></div>
-                     <div id="facebook_icon" class="vertical_center_align"></div>
-                     <div id="flicker_icon" class="vertical_center_align"></div>
-                     <div id="linkedin_icon" class="vertical_center_align"></div>
+                    <div id="info_div_content" class="horizon_center_align">
+                         <div id="portal_addr">http://www.futuremove.cn</div>
+                       <div id="partner_icons">
+			     <div id="weibo_icon" class="vertical_center_align"></div>
+			     <div id="weixin_icon" class="vertical_center_align"></div>
+			     <div id="facebook_icon" class="vertical_center_align"></div>
+			     <div id="flicker_icon" class="vertical_center_align"></div>
+			     <div id="linkedin_icon" class="vertical_center_align"></div>
+		       </div>  
+                    </div>
                </div>
 
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
        $(function(){
-            $("#header").addClass("bottomShadow");
-            var headerHeight = $("#header").height();
-            headerHeight -=20;
-            $("#header").height(headerHeight);
-            var mainTop = $("#main").css("top");
-            mainTop = mainTop.replace("px","");
-            mainTop = mainTop - 20;
-            $("#main").css({"top":mainTop+"px"});
-            var appTitleTop = $("#app_title").css("top");
-            appTitleTop = appTitleTop.replace("px","");
-            appTitleTop = appTitleTop - 20;
-            $("#app_title").css({"top":appTitleTop + "px"});
+             $("#portal_addr").click(function(){
+                 location.href = "http://www.futuremove.cn";
+             });
         });
    </script>
 </body>

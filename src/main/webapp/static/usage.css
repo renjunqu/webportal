@@ -1,13 +1,11 @@
 #usage_show {
   width:1024px;
   height:700px;
-  background:url(/static/images/usage1.png) no-repeat;
-  background-size:1024px 700px;
-  background-position:0px 0px;
+  background:url(/static/images/usage1.png) no-repeat center center;
 }
 #usage_navbar {
    position:absolute;
-   left:-40px;
+   left:5%;
    z-index:100;
    width:20px;
    height:110px;
@@ -31,3 +29,9 @@ div[id^=nav_] {
 #nav_2 {top:32px;}
 #nav_3 {top:62px;}
 #nav_4 {bottom:0px;}
+
+#scroll_background {
+   width:100%;
+   height:120%;
+}
+

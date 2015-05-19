@@ -1,3 +1,10 @@
+#main {
+  overflow:hidden !important;
+}
+#main video {
+  width:640px;
+}
+
 div#indexRightBar {
   position:absolute;
   right:0px;

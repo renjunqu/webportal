@@ -27,45 +27,60 @@
 <body>
      <script>
          var currMenu = "menu_4";
+         var currStep = 1;
      </script>
      <%@ include file="header.jsp"%> 
      <div id="main">
-	     <div class="center_align" id="usage_show">
-		     <div id="usage_navbar" class="vertical_center_align">
-			     <div id="nav_1"></div>
-			     <div id="nav_2"></div>
-			     <div id="nav_3"></div>
-			     <div id="nav_4"></div>
+		     <div class="center_align" id="usage_show">
 		     </div>
-             </div>
+	     <div id="usage_navbar" class="vertical_center_align">
+		     <div id="nav_1"></div>
+		     <div id="nav_2"></div>
+		     <div id="nav_3"></div>
+		     <div id="nav_4"></div>
+	     </div>
+            <div id="scroll_background"></div>
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
        var prev_step = null;
-       $(function(){
-            prev_step = $("#nav_1").get(0);
-            $("#header").addClass("bottomShadow");
-            var headerHeight = $("#header").height();
-            headerHeight -=20;
-            $("#header").height(headerHeight);
-            var mainTop = $("#main").css("top");
-            mainTop = mainTop.replace("px","");
-            mainTop = mainTop - 20;
-            $("#main").css({"top":mainTop+"px"});
-            var appTitleTop = $("#app_title").css("top");
-            appTitleTop = appTitleTop.replace("px","");
-            appTitleTop = appTitleTop - 20;
-            $("#app_title").css({"top":appTitleTop + "px"});
-	    $("[id^=nav_]").click(function(e){
-		    $(prev_step).css({"background-color":"#f0e4cc"});
-		    prev_step = e.target;
-		    $(prev_step).css({"background-color":"#e5c267"});
-		    var id = $(prev_step).attr("id");
-		    id = id.replace("nav_","usage");
-		    $("#usage_show").css({"background":"url('/static/images/"+id+".png') no-repeat",
+       var lastScrollTop = 0;
+       function changeStep(nowStep) {
+              var prevStep = currStep ;
+              console.log(currStep);
+              currStep = nowStep;
+              console.log(currStep);
+              var prevStep_id = "nav_" + prevStep;
+              var currStep_id = "nav_" + currStep;
+              $("#"+prevStep_id).css({"background-color":"#f0e4cc"});
+              $("#"+currStep_id).css({"background-color":"#e5c267"});
+              $("#usage_show").css({"background":"url('/static/images/usage"+nowStep+".png') no-repeat",
 			                  "background-size":"1024px 700px",
                                           "background-position":"0px 0px" 
-			    });
+	    });
+              currStep = currStep - 1;
+              currStep = currStep + 1;
+  
+       }
+
+       $(function(){
+            
+	    $("[id^=nav_]").click(function(e){
+		    var id = $(e.target).attr("id");
+		    id = id.replace("nav_","");
+                    changeStep(id);
+            });
+            $("#main").scroll(function(){
+                  var sTop = $("#main").scrollTop();
+                  var scrollHeight = sTop + $("#main").height();
+                  var background_height = $("#scroll_background").height();
+                //  console.log("sh1 is "+scrollHeight + " sh2 is "+background_height);
+                  if(scrollHeight >= 750 && scrollHeight >= background_height && sTop > lastScrollTop) {
+                       var nowStep = ((currStep + 1) > 4) ? 1: currStep+1;
+                       changeStep(nowStep);
+                      $("#main").animate({ scrollTop: 0 }, "fast");
+                  }
+                 lastScrollTop = sTop;
             });
         });
    </script>

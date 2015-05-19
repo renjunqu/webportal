@@ -1,11 +1,10 @@
+
 #feature_show {
   position:absolute;
-  bottom:0px;
   top:147px;
-  width:100%;
-  background:url(/static/images/feature_background.png) no-repeat;
-  background-size:100% 100%;
-  background-position:0px 0px;
+  width:924px;
+  height:500px;
+  background:url(/static/images/feature_background.png) no-repeat center center;
 }
 
 #feature_title {
