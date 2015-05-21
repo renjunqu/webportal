@@ -1,0 +1,112 @@
+body {
+  font-size:100%;
+}
+#header {
+ position:absolute;
+ background:url("/static/mobile/images/header.png") no-repeat center center;
+ height:90px;
+ width:100%;
+ background-size:13.5em 2em;
+ top:0em;
+ border-style:solid ;
+ border-bottom-size:1px;
+}
+#title {
+  position:absolute;
+  height:72px;
+  top:90px;
+  left:0px;
+  right:0px;
+  background:url("/static/mobile/images/usage_title.png") no-repeat center center;
+}
+
+#backButton  {
+ color:#000;
+ font-size:2.1em;
+  position:absolute;
+  left:9px;
+  top:15px; 
+}
+.center_align {
+     position: absolute; 
+     left: 50%; 
+     top: 50%;
+     -ms-transform:translate(-50%,-50%);
+     -webkit-transform:translate(-50%,-50%);
+     -moz-transform:translate(-50%,-50%);
+     -o-transform:translate(-50%,-50%);
+     transform:translate(-50%,-50%);
+}
+.horizon_center_align {
+     left: 50%; 
+     -ms-transform:translate(-50%,0%);
+     -webkit-transform:translate(-50%,0%);
+     -moz-transform:translate(-50%,0%);
+     -o-transform:translate(-50%,0%);
+     transform:translate(-50%,0%);
+}
+.vertical_center_align {
+     top: 50%; 
+     -ms-transform:translate(0%,-50%);
+     -webkit-transform:translate(0%,-50%);
+     -moz-transform:translate(0%,-50%);
+     -o-transform:translate(0%,-50%);
+     transform:translate(0%,-50%);
+}
+
+
+#after_main {
+ position:absolute;
+ height:100px;
+ bottom:-100px;
+ width:100%;
+}
+
+#usage_show_div {
+ position:absolute;
+ top:162px;
+ width:100%;
+ bottom:0px;
+ background:#fff;
+ overflow:scroll;
+}
+
+#usage_show {
+   width:80%;
+   height:80%;
+   background: url("/static/mobile/images/usage_1.png") no-repeat center center;
+   background-size:100% 100%;
+}
+
+#usage_navbar {
+ position:absolute;
+ bottom:40px;
+ width:300px;
+ height:20px;
+}
+
+div[id^=nav_] {
+    position:absolute;
+    height:20px;
+    width:20px;
+    border-radius:20px;
+    background:#fff; 
+    border:1px solid #379ec5;
+}
+
+#nav_1 {
+   left:0px;
+}
+#nav_2 {
+   left:100px;
+}
+#nav_3 {
+   left:200px;
+}
+#nav_4 {
+   left:300px;
+}
+
+.selected {
+  background:#379ec5 !important;
+}

@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/static/jquery.tooltipster.min.js"></script>
 <div id="header">
     
-     <div id="app_title" class="vertical_center_align"></div>
+     <div id="app_title"></div>
      <div id="menuBar" class="center_align">
             <div id="menu_1">
                    <div style="position:relative;">
@@ -77,6 +77,10 @@
 			    mainTop = mainTop.replace("px","");
 			    mainTop = mainTop - 60;
 			    $("#main").css({"top":mainTop+"px"});
+			    var appTitleTop = $("#app_title").css("top");
+			    appTitleTop = appTitleTop.replace("px","");
+			    appTitleTop = appTitleTop - 40;
+			    $("#app_title").css({"top":appTitleTop + "px"});
                             $("#header_web_b").css({"display":"none"});
                              
 		   }

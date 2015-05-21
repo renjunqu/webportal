@@ -1,0 +1,204 @@
+body {
+  font-size:100%;
+}
+#header {
+ position:absolute;
+ background:url("/static/mobile/images/header.png") no-repeat center center;
+ height:90px;
+ width:100%;
+ background-size:13.5em 2em;
+ top:0em;
+}
+#title {
+  position:absolute;
+  height:72px;
+  top:90px;
+  left:0px;
+  right:0px;
+  background:url("/static/mobile/images/usage_title.png") no-repeat center center;
+}
+
+#backButton  {
+ color:#000;
+ font-size:2.1em;
+  position:absolute;
+  left:9px;
+  top:15px; 
+}
+.center_align {
+     position: absolute; 
+     left: 50%; 
+     top: 50%;
+     -ms-transform:translate(-50%,-50%);
+     -webkit-transform:translate(-50%,-50%);
+     -moz-transform:translate(-50%,-50%);
+     -o-transform:translate(-50%,-50%);
+     transform:translate(-50%,-50%);
+}
+.horizon_center_align {
+     left: 50%; 
+     -ms-transform:translate(-50%,0%);
+     -webkit-transform:translate(-50%,0%);
+     -moz-transform:translate(-50%,0%);
+     -o-transform:translate(-50%,0%);
+     transform:translate(-50%,0%);
+}
+.vertical_center_align {
+     top: 50%; 
+     -ms-transform:translate(0%,-50%);
+     -webkit-transform:translate(0%,-50%);
+     -moz-transform:translate(0%,-50%);
+     -o-transform:translate(0%,-50%);
+     transform:translate(0%,-50%);
+}
+
+
+#main_content {
+  position:absolute;
+  top:92px;
+  height:520px;
+  width:100%;
+  background:#dbecec;
+}
+
+#main_title1 {
+  position:absolute;
+  color:#4cb3b1;
+  font-size:24px;
+  height:25px;
+  line-height:25px;
+  width:104px;
+  top:30px;
+
+}
+#main_title2 {
+  position:absolute;
+  top:120px;
+  line-height:32px;
+  height:64px;
+  width:500px;
+  font-size:30px;
+  color:#4cb3b1;
+  text-align:center;
+  
+  
+}
+#main_title3 {
+  position:absolute;
+  width:464px;
+  height:42px;
+  background:url("/static/mobile/images/mbint_title3.png") no-repeat center center;
+  background-size:100% 100%;
+  top:343px;
+  
+}
+#main_input1 {
+  position:absolute;
+  top:226px;
+  height:33px;
+  width:434px;
+  background:url("/static/mobile/images/mbint_mobileNo.png") no-repeat center center;
+  background-size:100% 100%;
+  border:0px solid red;
+}
+#main_input2 { 
+  position:absolute;
+  top:292px;
+  height:33px;
+  width:434px;
+  background:url("/static/mobile/images/mbint_email.png") no-repeat center center;
+  background-size:100% 100%;
+  border:0px solid blue;
+}
+#main_button2 { 
+  position:absolute;
+  top:0px;
+  height:48px;
+  right:30px;
+  background:url("/static/mobile/images/mbint_rest.png") no-repeat center center;
+  background-size:100% 100%;
+  width:106px;
+}
+#main_button1 { 
+  position:absolute;
+  height:48px;
+  top:0px;
+  left:30px;
+  background:url("/static/mobile/images/mbint_submit.png") no-repeat center center;
+  background-size:100% 100%;
+  width:156px;
+}
+.thin_input {
+      border:0px solid !important;
+      padding:0px;
+}
+input {
+ position:absolute;
+ top:0px;
+ right:0px;
+ width:360px;
+ height:25px;
+ background:#dbecec;
+}
+
+#lb_con {
+  position:absolute;
+  width:50%;
+  left:50%;
+  top:402px;
+  height:50px;
+}
+
+#rb_con {
+  position:absolute;
+  width:50%;
+  right:50%;
+  top:402px;
+  height:50px;
+}
+
+#share_con {
+  position:absolute;
+  width:100%;
+  top:600px;
+  height:208px;
+  background:#e5c267;
+
+}
+
+#share_title {
+
+}
+
+#share_btns {
+
+}
+
+#sbtn1 {
+
+}
+#sbtn2 {
+
+}
+#sbtn3 {
+
+}
+
+#contact_info_div {
+  position:absolute;
+  width:100%;
+  height:817px;
+  top:790px;
+  background:url("/static/mobile/images/contanct_info_div.png") no-repeat center center;
+  background-size:cover;
+  border:1px solid;
+}
+#contact_info {
+  position:absolute;
+  width:100%;
+  height:438px;
+  top:0px;
+  background:url("/static/mobile/images/contanct_info.png") no-repeat center center;
+  background-size:cover;
+  border:1px solid;
+}
