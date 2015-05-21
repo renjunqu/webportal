@@ -27,9 +27,3 @@
 .ui-page {
    background:#fff;
 }
-
-
-.thin_input {
-      border:0px solid !important;
-      padding:0px;
-}

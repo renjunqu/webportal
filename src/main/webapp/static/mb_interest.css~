@@ -158,6 +158,7 @@ input {
 #mi_sbtn2 {
 	position:absolute;
 	top:0px;
+	left:144px;
 	width:73px;
 	height:73px;
 	background:url("/static/mobile/images/mi_sqq.png") no-repeat center center;

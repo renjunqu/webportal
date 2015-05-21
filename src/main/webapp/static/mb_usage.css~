@@ -3,8 +3,8 @@
  background:url("/static/mobile/images/header.png") no-repeat center center;
  height:100px;
  width:100%;
- border-width:1px 0px 0px 0px;
- border-top:solid #cfcfcf;
+ border-width:0px 0px 1px 0px;
+ border-bottom:solid #cfcfcf;
 }
 #us_title {
   position:relative;

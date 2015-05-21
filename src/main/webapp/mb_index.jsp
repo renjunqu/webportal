@@ -16,60 +16,100 @@
 <!DOCTYPE html>
 <html>
     <header>
+    <meta name="viewport" content="
+    width=640, 
+    minimum-scale=0.01,
+    maximum-scale=10.0,
+    user-scalable=yes
+    ">
     <link rel="stylesheet" href="/static/mobile/jquery.mobile-1.3.2.min.css">
     <script src="/static/jquery-1.11.3.min.js"></script>
     <script src="/static/mobile/jquery.mobile-1.3.2.min.js"></script>
     <link rel="stylesheet" href="/static/mb_main.css">
+    <link rel="stylesheet" href="/static/mb_index.css">
+    <link rel="stylesheet" href="/static/mb_usage.css">
+    <link rel="stylesheet" href="/static/mb_interest.css">
     </header>
-<body>
-         <div id="mainDiv" style="width:100%;height:100%;">
-             <div id="after_main"></div>
-          <div id="header">
-               <div id="backButton">&lt;&nbsp;返回</div>
-	  </div>
-          <div id="title">
-	  </div>
-          <div id="video_div" style="background:#000;">
-                  <div id="video_poster"> 
-                            <div id="play_button"></div>
-                  </div>
-		  <video id="indexVideo" class="horizon_center_align" style="position:absolute;width:auto !important;height:100%;!important;position:absolute;top:0px;" controls>
-				   <source src="http://cdn.futuremove.cn/video/index.mp4" type="video/mp4">
-				   "Your browser does not support html5 video, please visit: "<a href="http://www.baidu.com">www.baidu.com</a>
-			     </video>
-          </div>
-          <div id="feature_show">
-                  <div id="fs_container" class="center_align">
-			  <div id="feature_1_div">
-				  <div id="feature_1" class="center_align">
-				  </div>
+<body data-enhanced="fallse" style="background:#fff;">
+		  <div data-enhance="false" id="header">
+		  </div>
+		  <div data-enhance="false" id="title">
+		  </div>
+		  <div data-enhance="false" id="video_div">
+			  <div data-enhance="false" id="video_poster"> 
+				    <div class="center_align" data-enhance="false" id="play_button"></div>
 			  </div>
-			  <div id="feature_2_div">
-				  <div id="feature_2" class="center_align">
+		     <video id="indexVideo" class="center_align" style="height:90%;" controls>
+			   <source src="http://cdn.futuremove.cn/video/index.mp4" type="video/mp4">
+			   "Your browser does not support html5 video, please visit: "<a href="http://www.baidu.com">www.baidu.com</a>
+		     </video>
+		  </div>
+		  <div data-enhance="false" id="feature_show">
+				  <div data-enhance="false" id="feature_1_div">
+					  <div data-enhance="false" id="feature_1" class="center_align">
+					  </div>
 				  </div>
-			  </div>
-			  <div id="feature_3_div">
-				  <div id="feature_3" class="center_align">
+				  <div data-enhance="false" id="feature_2_div">
+					  <div data-enhance="false" id="feature_2" class="center_align">
+					  </div>
 				  </div>
-			  </div>
-			  <div id="feature_4_div">
-				  <div id="feature_4" class="center_align">
+				  <div data-enhance="false" id="feature_3_div">
+					  <div data-enhance="false" id="feature_3" class="center_align">
+					  </div>
 				  </div>
-			  </div>
-                  </div>
-          </div>
-        </div>
+				  <div data-enhance="false" id="feature_4_div">
+					  <div data-enhance="false" id="feature_4" class="center_align">
+					  </div>
+				  </div>
+		  </div>
+		  <div id="bottom" data-enhance="false">拖拽我加载更多内容......</div>
          <script>
                 $("#play_button").on("tap",function(e){
                      $("#video_poster").css({"display":"none"});
                      $('#indexVideo').trigger('play');
                 });
-
+$("#bottom").click(function(){
+				      $.ajax({
+					      
+					       url:"mb_usage.jsp",
+					       "type":'GET',
+					       success:function(data,textStatus,jqXHR){
+					            $("#bottom").before(data);;
+					       },
+						error:function(){
+						   alert("服务器错误");
+						}
+					      });
+		
+		
+		});
+                    var nextPage = "";
 		    $(document).on("scrollstop",function(){
-                         if($(document).scrollTop()==100) {
-                            window.location = "mb_usage.jsp";
-                        }  
-		    });
+			      if (($(this).scrollTop() + $(window).height() + 20 >= $(document).height()) && nextPage!="mb_interest.jsp") {
+			             //alert("bottom");
+				      if($(document).height()<1300) {
+					  nextPage = "mb_usage.jsp";
+				      } else {
+					  nextPage = "mb_interest.jsp";
+				      }
+				      console.log(nextPage);
+				      console.log(nextPage!="mb_interest.jsp");
+				      $.ajax({
+					      
+					       url:nextPage,
+					       "type":'GET',
+					       success:function(data,textStatus,jqXHR){
+					            $("#bottom").before(data);
+						    if(nextPage=="mb_interest.jsp")
+					                 $("#bottom").css({"display":"none"});
+					       },
+						error:function(){
+						   alert("服务器错误");
+						}
+					      });
+			      }
+                    });
+				     
 
         </script>
 
