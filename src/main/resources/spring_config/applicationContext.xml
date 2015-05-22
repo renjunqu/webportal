@@ -11,13 +11,6 @@
 						 http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring 
 						 http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd"
 	default-autowire="byType">
-	
-	
-	<ehcache:annotation-driven  cache-manager="cacheManager" />
-    
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-        p:config-location="classpath:/ehcache-test.xml" p:shared="true"
-    />
     
     
 	<import resource="applicationContext-bean.xml"/>
@@ -103,20 +96,7 @@
 	  
   
 	
-	<aop:config>
-	    <aop:pointcut id="retry_car_update_state"
-		            expression="execution(* com.futuremove.cacheServer.service.impl.CarServiceImpl.updateCarState*(..))" />
-		<aop:pointcut id="retry_car_clear_reserve"
-		            expression="execution(* com.futuremove.cacheServer.service.impl.CarServiceImpl.clearExpireReserve(..))" />
-		<aop:pointcut id="pc" expression="execution(* com.joymove.service.impl.*.*(..))" />
-		<aop:advisor pointcut-ref="pc" advice-ref="txAdvice" />        
-   
-		<aop:advisor pointcut-ref="retry_car_update_state"
-		                 advice-ref="retryAdvice"/> 
-		 <aop:advisor pointcut-ref="retry_car_clear_reserve"
-		                 advice-ref="retryAdvice"/> 
 
-	</aop:config>
 	
 	
 	

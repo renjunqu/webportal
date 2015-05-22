@@ -34,7 +34,12 @@
 
 		<div id="main_content" class="horizon_center_align" >
 			 <div id="info_submit">
-                             <div id="submit_title_icon"></div>
+                             <div id="submit_title_icon">
+				     <div id="sub_title1">
+				     </div>
+				     <div id="sub_title2">
+				     </div>
+                             </div>
                              <div id="submit_info_icon"></div>
                              <div id="submit_button_icon"></div>
                              <div id="reset_button_icon"></div>

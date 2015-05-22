@@ -25,7 +25,15 @@
         height:90px;
         left:36px;
         top:31px;
-        background:url(/static/images/submit_title.png) no-repeat center center;
+ /*       background:url(/static/images/submit_title.png) no-repeat center center; */
+}
+#sub_title2 {
+	position:absolute;
+        width:348px;
+        height:90px;
+        left:0px;
+        bottom:0px;
+        background:url(/static/images/sub_title2.png) no-repeat center center; 
 }
 #submit_info_icon {
 	position:absolute;
