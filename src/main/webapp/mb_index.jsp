@@ -39,7 +39,7 @@
 			  <div data-enhance="false" id="video_poster"> 
 				    <div class="center_align" data-enhance="false" id="play_button"></div>
 			  </div>
-		     <video id="indexVideo" class="center_align" style="height:90%;" controls>
+		     <video id="indexVideo" class="center_align" style="display:none;height:90%;" controls>
 			   <source src="http://cdn.futuremove.cn/video/index.mp4" type="video/mp4">
 			   "Your browser does not support html5 video, please visit: "<a href="http://www.baidu.com">www.baidu.com</a>
 		     </video>
@@ -70,13 +70,15 @@
                  </div>
          <script>
                 var nextPage = 0;
-                var pages = ["mb_usage.jsp","mb_interest.jsp"];
+                var pages = ["mb_usage1.jsp","mb_usage2.jsp","mb_usage3.jsp","mb_usage4.jsp","mb_interest.jsp"];
                 var loading=false;
                 function loadPage() {
 
                     var page_url = pages[nextPage];
+                    if(nextPage==pages.length) return;
                     $("#load_div").css({"display":"block"});
                     loading=true;
+                    console.log("next "+nextPage);
 		    $.ajax({
 			      
 			       url:page_url,
@@ -85,7 +87,7 @@
                                     loading=false;
 				    $("#bottom").before(data);
                                     nextPage++;
-                                    if(nextPage>=pages.length) {
+                                    if(nextPage==(pages.length)) {
                                        $("#bottom").css({"display":"none"});
                                     } else {
                                        $("#load_div").css({"display":"none"});
@@ -95,18 +97,13 @@
 				error:function(){
                                    loading=false;
 				   alert("服务器错误");
-                                   nextPage++;
-                                   if(nextPage>=pages.length) {
-                                       $("#bottom").css({"display":"none"});
-                                   } else {
-                                       $("#load_div").css({"display":"none"});
-                                   }
 				}
 			      });
                 }
 
                 $("#play_button").on("tap",function(e){
                      $("#video_poster").css({"display":"none"});
+                     $('#indexVideo').css({"display":"block"});
                      $('#indexVideo').trigger('play');
                 });
 		$("#bottom").on('tap',function(){

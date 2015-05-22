@@ -25,7 +25,7 @@
   width:100%;
   background:url("/static/mobile/images/video_poster.png") no-repeat center center;
   background-size:cover;
-  z-index:100;
+  z-index:1000;
 }
 
 #play_button {
