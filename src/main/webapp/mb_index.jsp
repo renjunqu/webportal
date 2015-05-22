@@ -62,53 +62,62 @@
 					  </div>
 				  </div>
 		  </div>
-		  <div id="bottom" data-enhance="false">拖拽我加载更多内容......</div>
+		  <div id="bottom" data-enhance="false">--点击加载更多精彩内容--
+                       <div id="load_div" data-enhance="false">
+                           <div id="load_wait_info" class="center_align"  data-enhance="false">
+                           </div>
+                       </div>
+                 </div>
          <script>
+                var nextPage = 0;
+                var pages = ["mb_usage.jsp","mb_interest.jsp"];
+                var loading=false;
+                function loadPage() {
+
+                    var page_url = pages[nextPage];
+                    $("#load_div").css({"display":"block"});
+                    loading=true;
+		    $.ajax({
+			      
+			       url:page_url,
+			       "type":'GET',
+			       success:function(data,textStatus,jqXHR){
+                                    loading=false;
+				    $("#bottom").before(data);
+                                    nextPage++;
+                                    if(nextPage>=pages.length) {
+                                       $("#bottom").css({"display":"none"});
+                                    } else {
+                                       $("#load_div").css({"display":"none"});
+
+                                    }
+			       },
+				error:function(){
+                                   loading=false;
+				   alert("服务器错误");
+                                   nextPage++;
+                                   if(nextPage>=pages.length) {
+                                       $("#bottom").css({"display":"none"});
+                                   } else {
+                                       $("#load_div").css({"display":"none"});
+                                   }
+				}
+			      });
+                }
+
                 $("#play_button").on("tap",function(e){
                      $("#video_poster").css({"display":"none"});
                      $('#indexVideo').trigger('play');
                 });
-$("#bottom").click(function(){
-				      $.ajax({
-					      
-					       url:"mb_usage.jsp",
-					       "type":'GET',
-					       success:function(data,textStatus,jqXHR){
-					            $("#bottom").before(data);;
-					       },
-						error:function(){
-						   alert("服务器错误");
-						}
-					      });
-		
-		
-		});
-                    var nextPage = "";
-		    $(document).on("scrollstop",function(){
-			      if (($(this).scrollTop() + $(window).height() + 20 >= $(document).height()) && nextPage!="mb_interest.jsp") {
-			             //alert("bottom");
-				      if($(document).height()<1300) {
-					  nextPage = "mb_usage.jsp";
-				      } else {
-					  nextPage = "mb_interest.jsp";
-				      }
-				      console.log(nextPage);
-				      console.log(nextPage!="mb_interest.jsp");
-				      $.ajax({
-					      
-					       url:nextPage,
-					       "type":'GET',
-					       success:function(data,textStatus,jqXHR){
-					            $("#bottom").before(data);
-						    if(nextPage=="mb_interest.jsp")
-					                 $("#bottom").css({"display":"none"});
-					       },
-						error:function(){
-						   alert("服务器错误");
-						}
-					      });
-			      }
-                    });
+		$("#bottom").on('tap',function(){
+                   if(loading==false)
+                        loadPage();
+                });
+		$(document).on("scrollstop",function(){
+		      if (loading==false && ($(this).scrollTop() + $(window).height() + 20 >= $(document).height()) ) {
+                               loadPage();     
+                      }
+                });
 				     
 
         </script>

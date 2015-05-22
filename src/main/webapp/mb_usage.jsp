@@ -17,6 +17,13 @@
 		  </div>
                   <div data-enhance="false"  id="us_title"></div>
                   <div data-enhance="false"  id="usage_show_div">
+                           <div id="usage_container">
+				     <div data-enhance="false"  id="usage_1"></div>
+				     <div data-enhance="false"  id="usage_2"></div>
+				     <div data-enhance="false"  id="usage_3"></div>
+				     <div data-enhance="false"  id="usage_4"></div>
+                           </div>
+
 			   <div data-enhance="false"  id="usage_navbar" class="horizon_center_align">
 				     <div data-enhance="false"  id="nav_1" class="selected"></div>
 				     <div data-enhance="false"  id="nav_2"></div>
@@ -29,21 +36,58 @@
          <script>
                  
                     var currStep = 1;
+                    var startChange = false;
+                    var lastX = null;
                     function changeStep(nextStep){
-                       $("#nav_"+currStep).removeClass("selected");
-                       $("#nav_"+nextStep).addClass("selected");
-                       $("#usage_show_div").css({"background":"url('/static/mobile/images/usage_"+nextStep+".png') no-repeat center center"});
-                       currStep = nextStep;
                     }
-                    $(document).on('swipeleft',function(){
-                          var nextStep = currStep -1 ;
-                          if(nextStep==0) nextStep = 4;
-                          changeStep(nextStep);
+                    $("#usage_show_div").on("touchstart",function(e){
+                         console.log("start");
+                         startChange = true;
+                         lastX = e.originalEvent.targetTouches[0].pageX;
+                   });
+                    $(document).on('touchmove',function(e){
+                          if(startChange) {
+                                 var newX = e.originalEvent.targetTouches[0].pageX;
+                                 var diffX = newX - lastX;
+                                 var currLeft =  $("#usage_container").css("left");
+                                 currLeft = currLeft.replace("px","");
+                                 currLeft = currLeft - 1;
+                                 currLeft = currLeft + diffX +1;
+                                 if(currLeft<-1920)
+                                     currLeft = -1920;
+                                 if(currLeft>0)
+                                      currLeft = 0;
+                                 $("#usage_container").css({"left":currLeft+"px"});
+                                 lastX = newX;
+
+                          }
                     });
-                    $(document).on('swiperight',function(){
-                          var nextStep = currStep +1 ;
-                          if(nextStep==5) nextStep = 1;
-                          changeStep(nextStep);
+                    $(document).on('touchend',function(e){
+                           if(startChange) {
+                                 startChange = false;
+                                 var currLeft =  $("#usage_container").css("left");
+                                 currLeft = currLeft.replace("px","");
+                                 currLeft = (currLeft - 1) * (-1) + 1;
+                                 
+                                 var oldLeft = (currStep *640) - 640;
+                                 var newStep = currStep;
+                                 console.log("curr "+currLeft);
+                                 console.log("old "+oldLeft);
+                                 if(oldLeft < currLeft) {
+                                     if(newStep<4) newStep++;
+                                       
+                                 } else if(currLeft < oldLeft) {
+                                     if(newStep>1) newStep--;
+                                 }
+                                 if(newStep != currStep) { 
+					 $("#nav_"+currStep).removeClass("selected");
+					 $("#nav_"+newStep).addClass("selected");
+					 currStep = newStep;
+                                         var newLeft = newStep * (-640) + 640;
+					 //$("#usage_container").css({"left":newLeft+"px"}); 
+					 $("#usage_container").animate({"left":newLeft+"px"},"fast"); 
+                                 } 
+                           }
                     });
                     
         </script>

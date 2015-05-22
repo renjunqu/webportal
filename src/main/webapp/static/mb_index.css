@@ -70,6 +70,7 @@
   left:0px;
   width:50%;
   height:50%;
+  color:blue;
 }
 #feature_3{
   width:201px;
@@ -98,4 +99,18 @@
   line-height:100px;
   font-size:30px;
   border:0px solid;
+}
+
+#load_wait_info {
+   width:64px;
+   height:64px;
+   background:url('/static/mobile/images/ajax-loader-order.gif') no-repeat center center;
+}
+#load_div {
+  display:none;
+  position:absolute;
+  height:100px;
+  width:100%;
+  top:0px;
+  background:#fff;
 }

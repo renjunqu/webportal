@@ -33,3 +33,52 @@
       border:0px solid !important;
       padding:0px;
 }
+
+
+@-webkit-keyframes webkit-rotate {
+
+  from {
+	    transform: rotate(0deg);
+    }
+
+  to {
+	    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes moz-rotate {
+  from {
+	    transform: rotate(0deg);
+    }
+
+  to {
+	    transform: rotate(360deg);
+  }
+}
+@-o-keyframes old-rotate {
+  from {
+	    transform: rotate(0deg);
+    }
+
+  to {
+	    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+	    transform: rotate(0deg);
+    }
+
+  to {
+	    transform: rotate(360deg);
+  }
+}
+.rotating {
+
+  -webkit-animation: webkit-rotate 0.5s infinite; /* Safari 4+ */
+
+  -moz-animation:    moz-rotate    0.5s infinite; /* Fx 5+ */
+
+  -o-animation:      old-rotate    0.5s infinite; /* Opera 12+ */
+  
+  animation:         rotate        0.5s infinite; /* IE 10+, Fx 29+ */
+}

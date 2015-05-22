@@ -18,34 +18,58 @@
     <head>
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
     <style type="text/css">
-div#main {
-   position:absolute;
-   top:0px;
-   left:0px;
-   bottom:0px;
-   right:0px;
-   overflow:auto;
-}
-       
+	@-webkit-keyframes webkit-rotate {
+
+	  from {
+		    transform: rotate(0deg);
+            }
+
+	  to {
+		    transform: rotate(360deg);
+	  }
+	}
+	@-moz-keyframes moz-rotate {
+	  from {
+		    transform: rotate(0deg);
+            }
+
+	  to {
+		    transform: rotate(360deg);
+	  }
+	}
+	@-o-keyframes old-rotate {
+	  from {
+		    transform: rotate(0deg);
+            }
+
+	  to {
+		    transform: rotate(360deg);
+	  }
+	}
+	@keyframes rotate {
+	  from {
+		    transform: rotate(0deg);
+            }
+
+	  to {
+		    transform: rotate(360deg);
+	  }
+	}
+	.rotating {
+
+ 	  -webkit-animation: webkit-rotate 2s infinite; /* Safari 4+ */
+	
+          -moz-animation:    moz-rotate    2s infinite; /* Fx 5+ */
+	
+          -o-animation:      old-rotate    2s infinite; /* Opera 12+ */
+	  
+          animation:         rotate        2s infinite; /* IE 10+, Fx 29+ */
+	}
+ 
     </style>
     </head>
 <body>
-     <div id="main">
-     <div id="test" style="z-index:-19;height:110%;width:100%;border:0px solid;">
+     <div id="main" style="width:87px;height:87px;border:0px solid;background:url('/static/mobile/images/sina_icons.png') no-repeat;background-size:87px 1700px;background-position:100% -201px;" class="rotating">
      </div>
-     </div>
-    <!-- <%@ include file="footer.jsp"%>  -->
-    <script>
-             $(function(){
-		      $(window).scroll(function(){
-			   console.log("scroll");
-		      });
-             });
-             $(function(){
-		      $("#main").scroll(function(){
-			   console.log("scroll main");
-		      });
-             });
-   </script>
 </body>
 </html>
