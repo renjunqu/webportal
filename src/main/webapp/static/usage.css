@@ -1,8 +1,42 @@
-#usage_show {
+#div_usage_show {
   width:1024px;
   height:700px;
-  background:url(/static/images/usage1.png) no-repeat center center;
+  /* background:url(/static/images/usage1.png) no-repeat center center; */
+  overflow-y:hidden;
+  overflow-x:hidden;
 }
+
+#us_container {
+   position:absolute;
+   width:1024px;
+   height:2800px;
+   overflow:hidden;
+}
+
+div[id^=usage_] {
+  position:absolute;
+  width:1024px;
+  height:700px;
+}
+
+#usage_1 {
+  top:0px;
+  background:url(/static/images/usage1.png) no-repeat center center; 
+}
+#usage_2 {
+  top:700px;
+  background:url(/static/images/usage2.png) no-repeat center center; 
+}
+#usage_3 {
+  top:1400px;
+  background:url(/static/images/usage3.png) no-repeat center center; 
+}
+#usage_4 {
+  top:2100px;
+  background:url(/static/images/usage4.png) no-repeat center center; 
+}
+
+
 #usage_navbar {
    position:absolute;
    left:5%;

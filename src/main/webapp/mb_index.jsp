@@ -29,9 +29,13 @@
     <link rel="stylesheet" href="/static/mb_index.css">
     <link rel="stylesheet" href="/static/mb_usage.css">
     <link rel="stylesheet" href="/static/mb_interest.css">
+    <title>Soda苏打 - 绿色出行,都市自由移动</title>
     </header>
 <body data-enhanced="fallse" style="background:#fff;">
 		  <div data-enhance="false" id="header">
+                          <div id="weixin_share_logo">
+                          <img src="/static/images/icons_soda1.jpg"  style="" alt="">
+                          </div>
 		  </div>
 		  <div data-enhance="false" id="title">
 		  </div>
@@ -70,7 +74,8 @@
                  </div>
          <script>
                 var nextPage = 0;
-                var pages = ["mb_usage1.jsp","mb_usage2.jsp","mb_usage3.jsp","mb_usage4.jsp","mb_interest.jsp"];
+                //var pages = ["mb_usage1.jsp","mb_usage2.jsp","mb_usage3.jsp","mb_usage4.jsp","mb_interest.jsp"];
+                var pages = ["mb_usage.jsp","mb_interest.jsp"];
                 var loading=false;
                 function loadPage() {
 
@@ -115,7 +120,6 @@
                                loadPage();     
                       }
                 });
-				     
 
         </script>
 

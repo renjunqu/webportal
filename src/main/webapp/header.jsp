@@ -19,7 +19,12 @@
 <script type="text/javascript" src="/static/jquery.tooltipster.min.js"></script>
 <div id="header">
     
-     <div id="app_title"></div>
+	<div id="app_title"> <div id="futuremove"></div></div>
+	<script>
+		$("#futuremove").click(function(){
+			window.location="http://www.futuremove.cn";
+		});
+	</script>
      <div id="menuBar" class="center_align">
             <div id="menu_1">
                    <div style="position:relative;">

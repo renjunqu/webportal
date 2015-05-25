@@ -19,6 +19,7 @@
     <meta name=”viewport” content=”width=device-width, initial-scale=1.0, user-scalable=no”/>
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/static/main.css" />
+    <title>Soda苏打 - 绿色出行,都市自由移动</title>
     <link rel="stylesheet" href="/static/appshow.css" />
          <!--[if lt IE 9]>
 	  <script src="/static/html5shiv.js"></script>

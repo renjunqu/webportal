@@ -3,6 +3,12 @@
  background:url("/static/mobile/images/header.png") no-repeat center center;
  height:100px;
  width:100%;
+ overflow:hidden;
+}
+#weixin_share_logo {
+  position:absolute;
+  top:-100000px;
+
 }
 #title {
   position:relative;

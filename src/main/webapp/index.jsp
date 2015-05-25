@@ -16,14 +16,10 @@
 <!DOCTYPE html>
 <html>
     <header>
-    <meta name=”viewport” content=”width=device-width, initial-scale=1.0, user-scalable=no”/>
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/static/main.css" />
     <link rel="stylesheet" href="/static/index.css" />
-         <!--[if lt IE 9]>
-	  <script src="/static/html5shiv.js"></script>
-	  <script src="/static/respond.min.js"></script>  
-	<![endif]-->
+    <title>Soda苏打 - 绿色出行,都市自由移动</title>
     </header>
 <body>
      <script>
@@ -31,9 +27,9 @@
      </script>
      <%@ include file="header.jsp"%> 
      <div id="main">
-		     <video id="indexVideo" style=" width:100%    !important;height:auto   !important;position:absolute;top:0px;" controls>
+		     <video id="indexVideo" style=" width:100%    !important;height:auto   !important;position:absolute;top:0px;" controls class="video-js vjs-default-skin">
 			   <source src="http://cdn.futuremove.cn/video/index.mp4" type="video/mp4">
-			   "Your browser does not support html5 video, please visit: "<a href="http://www.baidu.com">www.baidu.com</a>
+                            <p class="vjs-no-js">请允许Javascript 运行，或者不要在IE9以下版本运行以及不要在IE兼容模式下查看此网站，否则网站内容无法正常展示哦</p>
 		     </video>
 		     <div id="indexRightBar" >
 			<div id="resizeBar"></div>
@@ -78,15 +74,16 @@
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
-        $("#indexVideo").get(0).play();
+        $("#indexVideo").trigger("play");
         var startX=0;
         var startY=0;
         var start=false;
         $(function(){
                $(document).bind("mousemove",function(e){
-              //      console.log("start 123");
+                    console.log("mouse move");
+                            console.log(e.which);
                     if(start) {
-                            if(e.which==1) {
+                            console.log("yes");
 				    var  currX = e.pageX;
 				    var  currY = e.pageY;
 				    var diffX = currX - startX;
@@ -101,13 +98,16 @@
 					}
 					 $("#indexRightBar").width(currWidth);
                                          startX = e.pageX;
-                                         startY = e.pageY;
-				   }
-                        } else {
-                           $('body').css({"cursor":"default"});
-                           start=false;
-                        }
-                    }
+                                         startY = e.pageY; 
+                            }
+                         }
+                        
+               });
+               $(document).bind("mouseup",function(){
+                          if(start) {
+				   start = false;
+				   $('body').css({"cursor":"default"});
+                          }
                });
                $("#resizeBar").mousedown(function(e){
                  //console.log("start");

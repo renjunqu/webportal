@@ -16,23 +16,30 @@
 <!DOCTYPE html>
 <html>
     <header>
-    <meta name=”viewport” content=”width=device-width, initial-scale=1.0, user-scalable=no”/>
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/static/main.css" />
     <link rel="stylesheet" href="/static/usage.css" />
-         <!--[if lt IE 9]>
-	  <script src="/static/html5shiv.js"></script>
-	  <script src="/static/respond.min.js"></script>  
-	<![endif]-->
+    <title>Soda苏打 - 绿色出行,都市自由移动</title>
     </header>
 <body>
      <script>
          var currMenu = "menu_4";
          var currStep = 1;
+         var blocking = false;
      </script>
      <%@ include file="header.jsp"%> 
      <div id="main">
-		     <div class="center_align" id="usage_show">
+		     <div class="center_align" id="div_usage_show">
+                                 <div id="us_container">
+				     <div id="usage_1">
+				     </div>
+				     <div id="usage_2">
+				     </div>
+				     <div id="usage_3">
+				     </div>
+				     <div id="usage_4">
+				     </div>
+                                  </div>
 		     </div>
 	     <div id="usage_navbar" class="vertical_center_align">
 		     <div id="nav_1"></div>
@@ -40,50 +47,61 @@
 		     <div id="nav_3"></div>
 		     <div id="nav_4"></div>
 	     </div>
-            <div id="scroll_background"></div>
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
-       var prev_step = null;
-       var lastScrollTop = 0;
-       function changeStep(nowStep) {
-              var prevStep = currStep ;
-              console.log(currStep);
-              currStep = nowStep;
-              console.log(currStep);
-              var prevStep_id = "nav_" + prevStep;
-              var currStep_id = "nav_" + currStep;
-              $("#"+prevStep_id).css({"background-color":"#f0e4cc"});
-              $("#"+currStep_id).css({"background-color":"#e5c267"});
-              $("#usage_show").css({"background":"url('/static/images/usage"+nowStep+".png') no-repeat",
-			                  "background-size":"1024px 700px",
-                                          "background-position":"0px 0px" 
-	    });
-              currStep = currStep - 1;
-              currStep = currStep + 1;
-  
+       function changeStep(nowStep) { 
+              if(blocking==false) {
+                      blocking =  true;
+		      var prevStep = currStep;
+		      currStep = nowStep;
+		      var prevStep_id = "nav_" + prevStep;
+		      var currStep_id = "nav_" + currStep;
+		      $("#"+prevStep_id).css({"background-color":"#f0e4cc"});
+		      $("#"+currStep_id).css({"background-color":"#e5c267"});
+		      var currTop = (1-currStep) * 700;
+		      $("#us_container").animate({"top":currTop+"px"},500,function(){blocking=false;});
+              }
        }
 
        $(function(){
-            
 	    $("[id^=nav_]").click(function(e){
 		    var id = $(e.target).attr("id");
-		    id = id.replace("nav_","");
+		    id = parseInt(id.replace("nav_",""));
                     changeStep(id);
             });
-            $("#main").scroll(function(){
-                  var sTop = $("#main").scrollTop();
-                  var scrollHeight = sTop + $("#main").height();
-                  var background_height = $("#scroll_background").height();
-                //  console.log("sh1 is "+scrollHeight + " sh2 is "+background_height);
-                  if(scrollHeight >= 750 && scrollHeight >= background_height && sTop > lastScrollTop) {
-                       var nowStep = ((currStep + 1) > 4) ? 1: currStep+1;
-                       changeStep(nowStep);
-                      $("#main").animate({ scrollTop: 0 }, "fast");
-                  }
-                 lastScrollTop = sTop;
-            });
         });
+        var MOUSE_OVER = false;
+	$('body').bind('mousewheel', function(e){
+          //console.log("mousewheel");
+	  if(MOUSE_OVER){
+	    if(e.preventDefault) { e.preventDefault(); } 
+	    e.returnValue = false; 
+	    return false; 
+	  }
+	});
+	$('#div_usage_show').mouseenter(function(){ MOUSE_OVER=true; });
+	$('#div_usage_show').mouseleave(function(){ MOUSE_OVER=false; });
+
+	$('#div_usage_show').bind('mousewheel', function(e){
+                      var delta = 0;
+		if (!event) /* For IE. */
+			event = window.event;
+		if (event.wheelDelta) { /* IE/Opera. */
+			delta = event.wheelDelta/120;
+		} else if (event.detail) { /** Mozilla case. */
+			/** In Mozilla, sign of delta is different than in IE.
+			 * Also, delta is multiple of 3.
+			 */
+			delta = -event.detail/3;
+		}
+                if(delta>0 &&  currStep>1) {
+                    changeStep(currStep-1);
+               }  else if(currStep < 4) {
+                    changeStep(currStep+1);
+               }
+                
+	}); 
    </script>
 </body>
 </html>
