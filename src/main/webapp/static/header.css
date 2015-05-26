@@ -21,18 +21,6 @@ div#app_title {
   background-position:0px 0px;
   z-index:50;
 }
-div#futuremove {
-  height:20px;
-  width:80px;
-  position:absolute;
-  right:-110px;
-  bottom:0px;
-  background:url(/static/images/futuremove.png) no-repeat;
-  background-size:100% 100%; 
-  background-position:0px 0px;
-  z-index:50;
-    cursor:pointer;
-}
 
 div#menuBar {
    height:52px;
@@ -95,7 +83,7 @@ div#header_rightToolBar {
    right:28px;
    top:8px;
    width:100px;
-   height:78px;
+   height:88px;
    border:0px solid red;
 }
 
@@ -129,10 +117,10 @@ div#header_register_b:hover  {background-position:0px -41px;}
 div#header_web_b {
   position:absolute;
   bottom:0px;
-  width:100px;
-  height:30px;
+  width:78px;
+  height:40px;
   background:url(/static/images/header_web_button.png) no-repeat;
-  background-size:100px 30px;
+  background-size:78px 40px;
   background-position:0px 0px;
   cursor:pointer;
 }

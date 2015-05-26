@@ -42,13 +42,21 @@
 				     </div>
                              </div>
                              <div id="submit_info_icon"></div>
-                             <div id="submit_button_icon"></div>
-                             <div id="reset_button_icon"></div>
+                             <div id="submit_button_icon">
+                                    <div class="mask_div" style="display:none;">
+					   <div id="load_wait_info" class="center_align">
+					   </div>
+                                    </div>
+                            </div>
+                             <div id="reset_button_icon">
+                                    <div class="mask_div" style="display:none;">
+                                    </div>
+                             </div>
                              <div id="mobileNo_input_div">
-                                   手    机<input type="text" class="thin_input"></input>
+                                   手    机<input id="mobileNo_input" type="text" class="thin_input"></input>
                              </div>
                              <div id="email_input_div">
-                                   邮    箱<input type="text" class="thin_input"></input>
+                                   邮    箱<input id="email_input" type="text" class="thin_input"></input>
                              </div>
                          </div>
 			 <div id="app_download"></div>
@@ -59,9 +67,9 @@
                        <div id="partner_icons">
 			     <div id="weibo_icon" class="vertical_center_align"></div>
 			     <div id="weixin_icon" class="vertical_center_align"></div>
-			     <div id="facebook_icon" class="vertical_center_align"></div>
-			     <div id="flicker_icon" class="vertical_center_align"></div>
-			     <div id="linkedin_icon" class="vertical_center_align"></div>
+			     <div id="douban_icon" class="vertical_center_align"></div>
+			     <div id="youku_icon" class="vertical_center_align"></div>
+			     <div id="zhihu_icon" class="vertical_center_align"></div>
 		       </div>  
                     </div>
                </div>
@@ -69,9 +77,73 @@
      </div>
     <!-- <%@ include file="footer.jsp"%>  -->
     <script>
+         function ifPhoneNo(inputtxt)
+        {
+          var phoneno = /^\d{11}$/;
+          if((inputtxt.match(phoneno)))
+          {
+              return true;
+          }  else  {
+              return false;
+          }
+        }
+
+       var uploading = false;
        $(function(){
              $("#portal_addr").click(function(){
                  location.href = "http://www.futuremove.cn";
+             });
+             $("#submit_button_icon").click(function(){
+                  if(uploading)
+                     return;
+                  var mobileNo = $("#mobileNo_input").val();
+                  var email = $("#email_input").val();
+                  console.log(mobileNo);
+                  if(mobileNo.length==0 && email.length==0) {
+                          alert("手机号或者EMAIL请输入其中一个。");
+                          return;
+                  }
+
+                  if(mobileNo.length>0 && ifPhoneNo(mobileNo)==false)
+                  {
+                     alert("请输入正确的手机号");
+                     return ;
+                  }
+                  var data = {};
+                  data.mobileNo = mobileNo;
+                  data.email = email;
+                  uploading=true;
+                  $(".mask_div").css({"display":"block"});
+                 $(this).fadeOut(100).fadeIn(100);
+	          $.ajax({
+		      
+		       url:"fanmgr/addFan.c",
+		       "type":'POST',
+                       data:data,
+		       success:function(data,textStatus,jqXHR){
+                               uploading=false;
+                               $(".mask_div").css({"display":"none"});
+			       if(data.result=="10000"){
+				       alert("感谢您的关注。");
+				} else {
+				       alert("对不起，数据提交失败。");
+			       }
+
+		       },
+			error:function(){
+                           uploading=false;
+                           $(".mask_div").css({"display":"none"});
+			   alert("服务器错误");
+			}
+		    });
+                
+             });
+             $("#reset_button_icon").click(function(){
+                  if(uploading)
+                     return;
+                  $(this).fadeOut(100).fadeIn(100);
+                  $("#mobileNo_input").val("");
+                  $("#email_input").val("");
              });
         });
    </script>

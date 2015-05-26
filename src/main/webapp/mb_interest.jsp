@@ -26,17 +26,23 @@
 			  <div id="mi_main_title3" class="horizon_center_align">
 			  </div>
 			  <div id="mi_main_input1"  class="horizon_center_align">
-                                <input type="text" data-role="none" class="thin_input"></input>
+                                <input id="mobileNo_input" type="text" data-role="none" class="thin_input"></input>
 			  </div>
 			  <div id="mi_main_input2" class="horizon_center_align">
-                                <input type="text" data-role="none" class="thin_input"></input>
+                                <input id="email_input" type="text" data-role="none" class="thin_input"></input>
 			  </div>
                           <div id="mi_lb_con">
 				  <div id="mi_main_button1">
+					    <div class="mask_div" style="display:none;">
+						   <div id="load_wait_submit" class="center_align">
+						   </div>
+					    </div>
 				  </div>
                           </div>
                           <div id="mi_rb_con">
 				  <div id="mi_main_button2">
+                                    <div class="mask_div" style="display:none;">
+                                    </div>
 				  </div>
 			   </div>
                   </div>
@@ -52,3 +58,70 @@
                   <div id="mi_contact_info_div">
 			  <div id="mi_contact_info" class="horizon_center_align"> </div>
                   </div>
+    <script>
+        function ifPhoneNo(inputtxt)
+        {
+          var phoneno = /^\d{11}$/;
+          if((inputtxt.match(phoneno)))
+          {
+              return true;
+          }  else  {
+              return false;
+          }
+        }
+
+       var uploading = false;
+       $(function(){
+             $("#mi_main_button1").click(function(){
+                  if(uploading)
+                     return;
+                  var mobileNo = $("#mobileNo_input").val();
+                  var email = $("#email_input").val();
+                  console.log(mobileNo);
+                  if(mobileNo.length==0 && email.length==0) {
+                          alert("手机号或者EMAIL请输入其中一个。");
+                          return;
+                  }
+
+                  if(mobileNo.length>0 && ifPhoneNo(mobileNo)==false)
+                  {
+                     alert("请输入正确的手机号");
+                     return ;
+                  }
+                  var data = {};
+                  data.mobileNo = mobileNo;
+                  data.email = email;
+                  uploading=true;
+                  $(".mask_div").css({"display":"block"});
+                 $(this).fadeOut(100).fadeIn(100);
+	          $.ajax({
+		       url:"fanmgr/addFan.c",
+		       "type":'POST',
+                       data:data,
+		       success:function(data,textStatus,jqXHR){
+                               uploading=false;
+                               $(".mask_div").css({"display":"none"});
+			       if(data.result=="10000"){
+				       alert("感谢您的关注。");
+				} else {
+				       alert("对不起，数据提交失败。");
+			       }
+
+		       },
+			error:function(){
+                           uploading=false;
+                           $(".mask_div").css({"display":"none"});
+			   alert("服务器错误");
+			}
+		    });
+                
+             });
+             $("#mi_main_button2").click(function(){
+                  if(uploading)
+                     return;
+                  $(this).fadeOut(100).fadeIn(100);
+                  $("#mobileNo_input").val("");
+                  $("#email_input").val("");
+             });
+        });
+   </script>

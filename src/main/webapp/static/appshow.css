@@ -37,26 +37,16 @@
 }
 #appShow_actions {
  width:335px;
- height:443px;
+ height:335px;
 }
 
 
-#appShow_title {
- width:226px;
- height:41px;
- position:absolute;
- top:0px;
- background:url(/static/images/appShow_title.png) no-repeat;
- background-size:226px 41px;
- background-position:0px 0px;
-}
 
 #appShow_code  {
   position:absolute;
   bottom:0px; 
   width:335px;
   height:335px;
-  border-radius:335px;
- background: #fff url(/static/images/portal_code.png) no-repeat center center;
+  background: url(/static/images/appShow_code.png) no-repeat center center;
 }
 

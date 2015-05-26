@@ -2,9 +2,11 @@
 #feature_show {
   position:absolute;
   top:147px;
-  width:924px;
-  height:500px;
-  background:url(/static/images/feature_background.png) no-repeat center center;
+  width:850px;
+  height:400px;
+  background:url(/static/images/feature_background.png) no-repeat;
+  background-size:1024px 700px;
+  background-position:-85px -200px;
 }
 
 #feature_title {
@@ -18,16 +20,19 @@
    width:265px;
    height:25px;
    background:url(/static/images/feature_title.png) no-repeat;
-   background-size:1024px 700px;
+   background-size:265px 25px;
    background-position:-373px -106px;
 }
 
 #feature_1 { 
   background:url(/static/images/feature_1.png) no-repeat;
-  width:342px;
+  width:234px;
   height:119px;
-  background-size:342px 119px;
+  background-size:234px 119px;
   background-position:0px 0px;
+  left:50px;
+  bottom:40px;
+  position:absolute;
 }
 #feature_2 { 
   background:url(/static/images/feature_2.png) no-repeat;
@@ -35,6 +40,9 @@
   height:119px;
   background-size:342px 119px;
   background-position:0px 0px;
+  position:absolute;
+  bottom:40px;
+  left:40px;
 }
 #feature_3 { 
   background:url(/static/images/feature_3.png) no-repeat;
@@ -42,11 +50,17 @@
   height:119px;
   background-size:342px 123px;
   background-position:0px 0px;
+  position:absolute;
+  left:40px;
+  top:20px;
 }
 #feature_4 { 
   background:url(/static/images/feature_4.png) no-repeat;
-  width:342px;
-  height:119px;
-  background-size:342px 123px;
+  width:234px;
+  height:113px;
+  background-size:234px 113px;
   background-position:0px 0px;
+  position:absolute;
+  top:20px;
+  left:40px;
 }

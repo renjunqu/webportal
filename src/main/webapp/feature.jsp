@@ -38,19 +38,19 @@
         </div>
 		<div id="feature_show" class="horizon_center_align">
 			<div style="position:absolute;top:0px;left:0px;width:50%;height:50%;">
-			    <div id="feature_1" class="center_align">
+			    <div id="feature_1">
 			    </div>
 			</div>
 			<div style="position:absolute;top:0px;right:0px;width:50%;height:50%;">
-			    <div id="feature_2" class="center_align">
+			    <div id="feature_2">
 			    </div>
 			</div>
 			<div style="position:absolute;bottom:0px;left:0px;width:50%;height:50%;">
-			    <div id="feature_3" class="center_align">
+			    <div id="feature_3">
 			    </div>
 			</div>
 			<div style="position:absolute;bottom:0px;right:0px;width:50%;height:50%;">
-			    <div id="feature_4" class="center_align">
+			    <div id="feature_4">
 			    </div>
 			</div>
 		</div>

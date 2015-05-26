@@ -22,22 +22,30 @@
 #submit_title_icon {
 	position:absolute;
         width:348px;
-        height:90px;
+        height:110px;
         left:36px;
         top:31px;
  /*       background:url(/static/images/submit_title.png) no-repeat center center; */
 }
+#sub_title1 {
+	position:absolute;
+        width:100px;
+        height:45px;
+        left:15px;
+        top:0px;
+        background:url(/static/images/sub_title1.png) no-repeat center center; 
+}
 #sub_title2 {
 	position:absolute;
         width:348px;
-        height:90px;
+        height:45px;
         left:0px;
         bottom:0px;
         background:url(/static/images/sub_title2.png) no-repeat center center; 
 }
 #submit_info_icon {
 	position:absolute;
-        width:353px;
+        width:355px;
         height:38px;
         left:38px;
         top:265px;
@@ -45,19 +53,21 @@
 }
 #submit_button_icon {
 	position:absolute;
-        width:108px;
+        width:99px;
         height:33px;
         left:203px;
         top:316px;
         background:url(/static/images/submit_button_icon.png) no-repeat center center;
+        cursor:pointer;
 }
 #reset_button_icon {
 	position:absolute;
-        width:90px;
+        width:99px;
         height:33px;
         left:96px;
         top:316px;
         background:url(/static/images/reset_button_icon.png) no-repeat center center;
+        cursor:pointer;
 }
 
 #mobileNo_input_div {
@@ -160,31 +170,43 @@ div[id$=_input_div] input{
        height:24px;
        left:83px;
 }
-#facebook_icon {
+#douban_icon {
        position:absolute;
        cursor:pointer;
-       background:url(/static/images/facebook.png) no-repeat;
+       background:url(/static/images/douban_icon.png) no-repeat;
        background-size:29px 24px;
        width:29px;
        height:24px;
        left:166px;
 }
-#flicker_icon {
+#youku_icon {
        position:absolute;
        cursor:pointer;
-       background:url(/static/images/flicker.png) no-repeat;
+       background:url(/static/images/youku_icon.png) no-repeat;
        background-size:29px 24px;
        width:29px;
        height:24px;
        left:245px;
 }
-#linkedin_icon {
+#zhihu_icon {
        position:absolute;
        cursor:pointer;
-       background:url(/static/images/linkedin.png) no-repeat;
+       background:url(/static/images/zhihu_icon.png) no-repeat;
        background-size:29px 24px;
        width:29px;
        height:24px;
        left:325px;
 }
 
+.mask_div {
+  width:100%;
+  height:100%;
+  background-size:100% 100%;
+  background:rgba(255,255,255,0.6);
+}
+#load_wait_info {
+   width:20px;
+   height:20px;
+   background:url('/static/images/trans_load.gif') no-repeat center center;
+   background-size:100% 100%;
+}

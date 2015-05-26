@@ -50,19 +50,19 @@
 
 #susage_1 {
  background: url("/static/mobile/images/usage_1.png") no-repeat center center;
- background-size:90% 90%; 
+ background-size:100% 100%; 
 }
 #susage_2 {
  background: url("/static/mobile/images/usage_2.png") no-repeat center center;
- background-size:90% 90%; 
+ background-size:100% 100%; 
 }
 #susage_3 {
  background: url("/static/mobile/images/usage_3.png") no-repeat center center;
- background-size:90% 90%; 
+ background-size:100% 100%; 
 }
 #susage_4 {
  background: url("/static/mobile/images/usage_4.png") no-repeat center center;
- background-size:90% 90%; 
+ background-size:100% 100%; 
 }
 
 /* END required styles */
@@ -79,7 +79,8 @@ div[id^=us_nav_] {
    width:20px;
    height:20px;
    border-radius:20px;
-   background-color:#cce2c9; 
+   border:#3da2c9 1px solid;
+   background-color:#fff; 
 }
 #us_nav_1 {
   left:0px;

@@ -19,12 +19,7 @@
 <script type="text/javascript" src="/static/jquery.tooltipster.min.js"></script>
 <div id="header">
     
-	<div id="app_title"> <div id="futuremove"></div></div>
-	<script>
-		$("#futuremove").click(function(){
-			window.location="http://www.futuremove.cn";
-		});
-	</script>
+	<div id="app_title"> </div>
      <div id="menuBar" class="center_align">
             <div id="menu_1">
                    <div style="position:relative;">
@@ -72,6 +67,9 @@
 <script> 
    
    $( function() {
+		   $("#header_web_b").click(function(){
+				window.location="http://www.futuremove.cn";
+		   });
 		   if(currMenu !="menu_1") {
 			    //add spec view to the main content, if not the index.jsp
 			    $("#header").addClass("bottomShadow");

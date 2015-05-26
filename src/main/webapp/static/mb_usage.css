@@ -35,23 +35,23 @@ div[id^=usage_] {
 
 #usage_1 {
   left:0px;
- background: url("/static/mobile/images/usage_1.png") no-repeat center center;
- background-size:90% 90%; 
+  background: url("/static/mobile/images/usage_1.png") no-repeat center center;
+  background-size:100% 100%; 
 }
 #usage_2 {
   left:0px;
  background: url("/static/mobile/images/usage_2.png") no-repeat center center;
- background-size:90% 90%; 
+ background-size:100% 100%; 
 
 }
 #usage_3 {
   left:0px;
  background: url("/static/mobile/images/usage_3.png") no-repeat center center;
- background-size:90% 90%; 
+ background-size:100% 100%; 
 
 }
 #usage_4 {
   left:0px;
  background: url("/static/mobile/images/usage_4.png") no-repeat center center;
- background-size:90% 90%; 
+ background-size:100% 100%; 
 }

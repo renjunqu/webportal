@@ -34,14 +34,13 @@
      <div id="main">
           <div id="main_content" class="horizon_center_align">
 		  <div style="height:100%;width:50%;position:absolute;left:0px;">
-			 <div id="appShow_phone1">
+			 <div id="appShow_phone1" class="vertical_center_align">
 			 </div>
-			 <div id="appShow_phone2">
+			 <div id="appShow_phone2" class="vertical_center_align">
 			 </div>
 		  </div>
 		  <div style="height:100%;width:50%;position:absolute;right:0px;">
                        <div id="appShow_actions" class="center_align">
-                               <div id="appShow_title" class="horizon_center_align"></div>
 			       <div id="appShow_code">
 			       </div>
                        </div>
