@@ -17,13 +17,8 @@
 		  </div>
                   <div id="mi_main_content">
 			  <div id="mi_main_title1" class="horizon_center_align">
-                                我感兴趣
 			  </div>
 			  <div id="mi_main_title2" class="horizon_center_align">
-                             如果你想了解更多soda最新情况<br/>
-                           和体验soda分时共享生活方式请留下
-			  </div>
-			  <div id="mi_main_title3" class="horizon_center_align">
 			  </div>
 			  <div id="mi_main_input1"  class="horizon_center_align">
                                 <input id="mobileNo_input" type="text" data-role="none" class="thin_input"></input>
@@ -56,7 +51,27 @@
                         </div>
                   </div>
                   <div id="mi_contact_info_div">
-			  <div id="mi_contact_info" class="horizon_center_align"> </div>
+			  <div id="mi_contact_info" > 
+                                <div id="mi_weixin_code_div">
+					<div id="mi_weixin_code">
+					</div>
+                                </div>
+                                <div id="mi_weibo_code_div">
+					<div id="mi_weibo_code">
+					</div>
+                                </div>
+                                <div id="fingerprint_div">
+                                               <div class="sliding_bar"> </div>
+                                </div>
+                          </div>
+			 <div id="popup_bar"> 
+                                <div>
+					<div class="popup_button" id="pb_save">收藏</div>
+					<div class="popup_button" id="pb_savePic">保存图片</div>
+					<div class="popup_button" id="pb_scanCode">关注苏打Soda微信公众号</div>
+					<div class="popup_button" id="pb_cancel">取消</div>
+                                </div>
+			 </div>
                   </div>
     <script>
         function ifPhoneNo(inputtxt)
@@ -71,6 +86,11 @@
         }
 
        var uploading = false;
+       $(".sliding_bar").animate({"top":"+=160px"},1800);
+       setInterval(function(){
+           $(".sliding_bar").css({"top":"0px"});
+           $(".sliding_bar").animate({"top":"+=160px"},2000);
+       },2100);
        $(function(){
              $("#mi_main_button1").click(function(){
                   if(uploading)
@@ -122,6 +142,18 @@
                   $(this).fadeOut(100).fadeIn(100);
                   $("#mobileNo_input").val("");
                   $("#email_input").val("");
+             });
+             $("#fingerprint_div").on("taphold",function(){
+                 $("#popup_bar").css({"display":"block"});
+                 $("#popup_bar").css({"height":"0px"});
+                 $("#popup_bar").animate({"height":"260px"},500);
+             });
+             $("#pb_cancel").on("tap",function(){
+                alert("hello");
+             });
+             $(".popup_button").on("tap",function(){
+		    $("#popup_bar").css({"display":"none"});
+                    $("#popup_bar").css({"height":"0px"});
              });
         });
    </script>

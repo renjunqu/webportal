@@ -54,8 +54,8 @@
   height:50%;
 }
 #feature_1{
-  width:201px;
-  height:229px;
+  width:195px;
+  height:217px;
   background:url("/static/mobile/images/feature_1.png") no-repeat center center; 
 }
 #feature_2_div {
@@ -66,8 +66,8 @@
   height:50%;
 }
 #feature_2{
-  width:201px;
-  height:229px;
+  width:195px;
+  height:217px;
   background:url("/static/mobile/images/feature_2.png") no-repeat center center; 
 }
 #feature_3_div {
@@ -79,8 +79,8 @@
   color:blue;
 }
 #feature_3{
-  width:201px;
-  height:229px;
+  width:195px;
+  height:217px;
   background:url("/static/mobile/images/feature_3.png") no-repeat center center; 
 }
 #feature_4_div {
@@ -91,8 +91,8 @@
   height:50%;
 }
 #feature_4{
-  width:201px;
-  height:229px;
+  width:195px;
+  height:217px;
   background:url("/static/mobile/images/feature_4.png") no-repeat center center; 
 }
 
@@ -120,3 +120,4 @@
   top:0px;
   background:#fff;
 }
+
