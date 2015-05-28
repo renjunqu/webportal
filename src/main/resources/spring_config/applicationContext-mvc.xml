@@ -35,7 +35,7 @@
 	</bean>   
 	   
 	<bean name="mappingJacksonHttpMessageConverter" 
-	      class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" /> 
+	      class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
  
 	<bean name="viewResolver" 
 	      class="org.springframework.web.servlet.view.InternalResourceViewResolver">

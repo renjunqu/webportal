@@ -44,6 +44,12 @@
 
 
 	<dependencies>
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>com.futuremove</groupId>
@@ -184,10 +190,23 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.5.4</version>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.6.2</version>
+		</dependency>
+-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.3.0</version>
 		</dependency>
 
 		<dependency>
@@ -370,7 +389,7 @@
 				</resource>
 			</resources>
 	</build>
-	     <profiles>
+	<profiles>
        <profile>
            <id>showcase_env</id>
            <activation>

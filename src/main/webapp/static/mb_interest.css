@@ -269,7 +269,7 @@ input {
 
 #popup_bar > div {
   position:relative;
-  height:260px;
+  height:190px;
   width:640px;
   background:#cccccc;
   border:1px solid;
@@ -291,12 +291,8 @@ input {
 #pb_save {
  top:0px;
 }
-#pb_savePic {
- top:62px;
-
-}
 #pb_scanCode {
- top:124px;
+ top:62px;
 }
 #pb_cancel {
  bottom:0px;

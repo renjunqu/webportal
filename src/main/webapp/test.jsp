@@ -17,59 +17,13 @@
 <html>
     <head>
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
-    <style type="text/css">
-	@-webkit-keyframes webkit-rotate {
-
-	  from {
-		    transform: rotate(0deg);
-            }
-
-	  to {
-		    transform: rotate(360deg);
-	  }
-	}
-	@-moz-keyframes moz-rotate {
-	  from {
-		    transform: rotate(0deg);
-            }
-
-	  to {
-		    transform: rotate(360deg);
-	  }
-	}
-	@-o-keyframes old-rotate {
-	  from {
-		    transform: rotate(0deg);
-            }
-
-	  to {
-		    transform: rotate(360deg);
-	  }
-	}
-	@keyframes rotate {
-	  from {
-		    transform: rotate(0deg);
-            }
-
-	  to {
-		    transform: rotate(360deg);
-	  }
-	}
-	.rotating {
-
- 	  -webkit-animation: webkit-rotate 2s infinite; /* Safari 4+ */
-	
-          -moz-animation:    moz-rotate    2s infinite; /* Fx 5+ */
-	
-          -o-animation:      old-rotate    2s infinite; /* Opera 12+ */
-	  
-          animation:         rotate        2s infinite; /* IE 10+, Fx 29+ */
-	}
- 
-    </style>
+    <script type="text/javascript" src="/static/jweixin-1.0.0.js"></script>
     </head>
 <body>
-     <div id="main" style="width:87px;height:87px;border:0px solid;background:url('/static/mobile/images/sina_icons.png') no-repeat;background-size:87px 1700px;background-position:100% -201px;" class="rotating">
-     </div>
+   <script>
+      $(function(){
+            alert(localtion.href.split('#')[0]);
+      });
+   </script>
 </body>
 </html>

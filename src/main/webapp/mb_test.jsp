@@ -15,42 +15,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script type="text/javascript" src="/static/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-  <style>
-      .swipe {
-  overflow: hidden;
-  visibility: hidden;
-  position: relative;
-}
-.swipe-wrap {
-  overflow: hidden;
-  position: relative;
-}
-.swipe-wrap > div {
-  float:left;
-  width:100%;
-  position: relative;
-}
-  </style>
-   <div id='slider' class='swipe'>
-	  <div class='swipe-wrap'>
-		    <div></div>
-		    <div></div>
-		    <div></div>
-	  </div>
-    <script>
-      window.mySwipe = new Swipe(document.getElementById('slider'), {
-		  startSlide: 2,
-		  speed: 400,
-		  auto: 3000,
-		  continuous: true,
-		  disableScroll: false,
-		  stopPropagation: false,
-		  callback: function(index, elem) {},
-		  transitionEnd: function(index, elem) {}
-	});
-    </script>
+      <script>
+               //alert(location.href.split('#')[0]);
+                   var this_url = location.href.split('#')[0];      
+                   $.ajax({
+                     type:"POST",
+                     url:"wxjs/getSignature.c",
+                     data:JSON.stringify({
+                          url:this_url
+                     }),
+                     dataType:'json',
+                     contentType:"application/json",
+                     success:function(data, textStatus, jqXHR){
+                                alert(JSON.stringify(data));
+                                wx.config({
+			              debug:true,
+				      appId:"wx0a6bcdeb9d86bdff",
+				      jsApiList:["scanQRCode"],
+                                      timestamp:data.timestamp,
+                                      nonceStr:data.noncestr,
+                                      signature:data.signature,
+                                });
+                                wx.ready(function(){
+                                    wx.scanQRCode({
+					       needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+					       scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+					       success: function (res) {
+					       var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+					     }
+					});
+                                });
+                                wx.error(function(res){
+                                       alert("qrj config error "+JSON.stringify(res));
+                                });
+                     },
+                     error:function(){
+                              alert("error");
+                     }
+                  });
+      </script>
 </div>
 </body>
 </html>

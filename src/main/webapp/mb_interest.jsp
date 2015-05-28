@@ -67,7 +67,6 @@
 			 <div id="popup_bar"> 
                                 <div>
 					<div class="popup_button" id="pb_save">收藏</div>
-					<div class="popup_button" id="pb_savePic">保存图片</div>
 					<div class="popup_button" id="pb_scanCode">关注苏打Soda微信公众号</div>
 					<div class="popup_button" id="pb_cancel">取消</div>
                                 </div>
@@ -146,10 +145,29 @@
              $("#fingerprint_div").on("taphold",function(){
                  $("#popup_bar").css({"display":"block"});
                  $("#popup_bar").css({"height":"0px"});
-                 $("#popup_bar").animate({"height":"260px"},500);
+                 $("#popup_bar").animate({"height":"190px"},500);
+             });
+             $("#pb_save").on("tap",function(){
+                    var url = window.location;
+                    var title="苏打";
+		    if(document.all) { // ie
+			window.external.AddFavorite(url, title);
+		    }
+		    else if(window.sidebar) { // firefox
+			window.sidebar.addPanel(title, url, "");
+		    }
+		    else if(window.opera && window.print) { // opera
+			var elem = document.createElement('a');
+			elem.setAttribute('href',url);
+			elem.setAttribute('title',title);
+			elem.setAttribute('rel','sidebar');
+			elem.click(); // this.title=document.title;
+		    }
+             });
+             $("#pb_scanCode").on("tap",function(){
+                    window.location = "http://mp.weixin.qq.com/s?__biz=MzAxNjU2MjgzMQ==&mid=206209637&idx=1&sn=05e7049b43f2311b78c61cb16923b141&scene=4#wechat_redirect";
              });
              $("#pb_cancel").on("tap",function(){
-                alert("hello");
              });
              $(".popup_button").on("tap",function(){
 		    $("#popup_bar").css({"display":"none"});
