@@ -131,7 +131,7 @@ input {
 #mi_share_btns {
 	position:absolute;
 	top:81px;
-	width:288px;
+	width:420px;
 	height:73px;
 }
 #mi_sbtn1 {
@@ -146,6 +146,7 @@ input {
 #mi_sbtn2 {
 	position:absolute;
 	top:0px;
+        left:83px;
 	width:73px;
 	height:73px;
 	background:url("/static/mobile/images/mi_sqq.png") no-repeat center center;
@@ -154,10 +155,27 @@ input {
 #mi_sbtn3 {
 	position:absolute;
 	top:0px;
-	right:0px;
 	width:73px;
 	height:73px;
 	background:url("/static/mobile/images/mi_sweibo.png") no-repeat center center;
+	background-size:100% 100%;
+}
+#mi_sbtn4 {
+	position:absolute;
+	top:0px;
+	right:83px;
+	width:75px;
+	height:73px;
+	background:url("/static/mobile/images/mi_syouku.png") no-repeat center center;
+	background-size:100% 100%;
+}
+#mi_sbtn5 {
+	position:absolute;
+	top:0px;
+	right:0px;
+	width:75px;
+	height:73px;
+	background:url("/static/mobile/images/mi_sdouban.png") no-repeat center center;
 	background-size:100% 100%;
 }
 
@@ -192,12 +210,21 @@ input {
    background:url('/static/images/trans_load.gif') no-repeat center center;
    background-size:100% 100%;
 }
+#mi_techbook_download_div {
+  position:absolute;
+  height:42px;
+  width:357px;
+  left:0px;
+  top:233px;
+  background:url("/static/mobile/images/techbook_download.png") no-repeat center center;  
+  cursor:pointer;
+}
 
 #mi_weixin_code_div {
    position:absolute;
    width:165px;
    height:182px;
-   top:258px;
+   top:288px;
    left:0px;
    background:url('/static/mobile/images/mi_weixin_code_div.png') no-repeat center center;
    background-size:100% 100%;
@@ -215,7 +242,7 @@ input {
 
 #mi_weibo_code_div {
    position:absolute;
-   top:258px;
+   top:288px;
    left:302px;
    width:165px;
    height:182px; 
@@ -235,7 +262,7 @@ input {
 
 #fingerprint_div {
    position:absolute;
-   top:523px;
+   top:553px;
    left:146px;
    width:149px;
    height:149px;

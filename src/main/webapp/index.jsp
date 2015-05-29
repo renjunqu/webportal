@@ -15,12 +15,13 @@
 
 <!DOCTYPE html>
 <html>
-    <header>
+    <head>
+     
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/static/main.css" />
     <link rel="stylesheet" href="/static/index.css" />
     <title>Soda苏打 - 绿色出行,都市自由移动</title>
-    </header>
+    </head>
 <body>
      <script>
          var currMenu = "menu_1";
@@ -78,7 +79,92 @@
         var startX=0;
         var startY=0;
         var start=false;
+       function ifPhoneNo(inputtxt)
+        {
+		  var phoneno = /^\d{11}$/;
+		  if((inputtxt.match(phoneno)))
+		  {
+		      return true;
+		  }  else  {
+		      return false;
+		  }
+        }
+        var getCode = false;
         $(function(){
+     
+               $("#rb_login_bottom_code_b").click(function(){
+		    //show the wait info
+                    if(registering || getCode) return;
+                    var phoneNo = $("#rb_login_mobileNo_input input").val(); 
+                    if(ifPhoneNo(phoneNo)) {
+			    getCode = true;
+			    $(this).html("<div id='codeCD'>60秒后在获取</div>");
+			    var secCount = 0;
+			    var intH = setInterval(function(){
+				if(secCount < 60) {
+				   $("#codeCD").html((60 - secCount) + "秒后再获取");
+				}else {
+				   clearInterval(intH);
+				   $("#rb_login_bottom_code_b").html("获取验证码");
+                                   getCode = false;
+				}
+				secCount++;
+			    },1000);
+                            $.args = {"mobileNo":phoneNo};
+                            $.ajax({
+                                           type:"POST",
+                                           url:'http://123.57.151.176:8082/joymove/usermgr/dynamicPwsGen.c',
+                                           data:JSON.stringify($.args),
+                                           crossDomain: true,
+                                           success: function(data,textStatus,jqXHR){
+                                                    console.log(data);
+                                           },
+                                           error: function(request,error){
+                                                   alert("获取验证码失败，请稍后重试!");
+                                           }
+                            });
+                    } else {
+                         alert("输入正确的手机号");
+                    }
+               });
+               var registering = false; 
+               $("#rb_login_submit_button").click(function(){
+		    //show the wait info
+                    if(registering) return;
+                    var phoneNo = $("#rb_login_mobileNo_input input").val(); 
+                    var code    = $("#rb_login_bottom_code_input input").val(); 
+                    if(ifPhoneNo(phoneNo) && code.length > 0) {
+			    $(this).html("<div id='waitRegister'>请稍后..</div>");
+                            registering = true;
+			   $.args = {"mobileNo":phoneNo,"code":code,"password":phoneNo};
+			   $.ajax({
+				   type:"POST",
+				   url:'http://123.57.151.176:8082/joymove/usermgr/register.c',
+				   data:JSON.stringify($.args),
+				   crossDomain: true, 
+                                   dataType:'json',
+				   success: function(data,textStatus,jqXHR){
+                                            registering = false;
+                                            $("#rb_login_submit_button").html("");
+					    if(data.result=="10000"){
+					       alert("注册成功，默认登录密码为手机号!,请下载我们的app开始您的智驾之旅");
+                                               window.location = "appshow.jsp";
+					    } else if(data.errMsg!=null && data.errMsg.length>0) {
+					       alert("注册失败,"+data.errMsg);
+					    } else {
+					       alert("注册失败，发生未知错误");
+					    }
+				   },
+				   error: function(request,error){
+                                            registering = false;
+                                            $("#rb_login_submit_button").html("");
+					    alert("出现内部错误!");
+				   }
+			   });                
+                    } else {
+                       alert("请输入正确的手机号以及验证码!"); 
+                    }
+               });
                $(document).bind("mousemove",function(e){
                     console.log("mouse move");
                             console.log(e.which);

@@ -46,12 +46,16 @@
                         <div id="mi_share_line" class="horizon_center_align"></div>
                         <div id="mi_share_btns" class="horizon_center_align">
                               <div id="mi_sbtn1"></div>
-                              <div id="mi_sbtn2" class="horizon_center_align"></div>
-                              <div id="mi_sbtn3"></div>
+                              <div id="mi_sbtn2"></div>
+                              <div id="mi_sbtn3" class="horizon_center_align"></div>
+                              <div id="mi_sbtn4"></div>
+                              <div id="mi_sbtn5"></div>
                         </div>
                   </div>
                   <div id="mi_contact_info_div">
 			  <div id="mi_contact_info" > 
+                                <div id="mi_techbook_download_div">
+                                </div>
                                 <div id="mi_weixin_code_div">
 					<div id="mi_weixin_code">
 					</div>
@@ -73,6 +77,12 @@
 			 </div>
                   </div>
     <script>
+        $("#mi_sbtn1").on("tap",function(){window.location = "http://mp.weixin.qq.com/s?__biz=MzAxNjU2MjgzMQ==&mid=206209637&idx=1&sn=05e7049b43f2311b78c61cb16923b141&scene=4#wechat_redirect";   });
+        $("#mi_sbtn2").on("tap",function(){window.location = "http://3165430861.qzone.qq.com/";   });
+        $("#mi_sbtn3").on("tap",function(){window.location = "http://m.weibo.cn/u/5582024083";   });
+        $("#mi_sbtn4").on("tap",function(){window.location = "http://i.youku.com/u/UMzA3MDk0MzcyOA==";   });
+        $("#mi_sbtn5").on("tap",function(){window.location = "http://www.douban.com/people/128345648/";   });
+        $("#mi_techbook_download_div").on("tap",function(){window.location = "http://cdn.futuremove.cn/ms/Beehive_Mobility_Network_techinal_paper.pdf"; });
         function ifPhoneNo(inputtxt)
         {
           var phoneno = /^\d{11}$/;

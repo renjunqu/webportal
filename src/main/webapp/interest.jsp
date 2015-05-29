@@ -59,7 +59,10 @@
                                    邮    箱<input id="email_input" type="text" class="thin_input"></input>
                              </div>
                          </div>
-			 <div id="app_download"></div>
+			 <div id="app_download">
+				 <div id="techbook_download" class="horizon_center_align">
+				 </div>
+                         </div>
 	       </div>
                <div id="info_div">
                     <div id="info_div_content" class="horizon_center_align">
@@ -72,6 +75,14 @@
 			     <div id="zhihu_icon" class="vertical_center_align"></div>
 		       </div>  
                     </div>
+                    <script>
+                         $("#weibo_icon").click(function(){ window.location = "http://weibo.com/p/1006065582024083/home?from=page_100606&mod=TAB#place";}); 
+                         $("#weixin_icon").click(function(){ window.location = "http://mp.weixin.qq.com/s?__biz=MzAxNjU2MjgzMQ==&mid=206209637&idx=1&sn=05e7049b43f2311b78c61cb16923b141&scene=4#wechat_redirect";}); 
+                         $("#douban_icon").click(function(){ window.location = "http://www.douban.com/people/128345648/";}); 
+                         $("#youku_icon").click(function(){ window.location = "http://i.youku.com/u/UMzA3MDk0MzcyOA==";}); 
+                         $("#zhihu_icon").click(function(){ window.location = "http://www.zhihu.com/people/su-da-soda-52";}); 
+                         $("#techbook_download").click(function(){ window.location = "http://cdn.futuremove.cn/ms/Beehive_Mobility_Network_techinal_paper.pdf";}); 
+                    </script> 
                </div>
 
      </div>

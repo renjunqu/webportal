@@ -15,8 +15,7 @@
 
 <!DOCTYPE html>
 <html>
-    <header>
-    <meta name=”viewport” content=”width=device-width, initial-scale=1.0, user-scalable=no”/>
+    <head>
     <title>Soda苏打 - 绿色出行,都市自由移动</title>
     <script type="text/javascript" src="/static/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="/static/main.css" />
@@ -25,7 +24,7 @@
 	  <script src="/static/html5shiv.js"></script>
 	  <script src="/static/respond.min.js"></script>  
 	<![endif]-->
-    </header>
+    </head>
 <body>
      <script>
          var currMenu = "menu_2";

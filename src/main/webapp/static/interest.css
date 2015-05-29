@@ -114,7 +114,17 @@ div[id$=_input_div] input{
         border:0px solid;
         background:url(/static/images/portal_code.png) no-repeat;
         background-position:center center;
-    
+}
+
+#techbook_download {
+       position:absolute;
+       bottom:40px;
+       width:258px;
+       height:26px;
+       background:url(/static/images/downloadTechBook.png) no-repeat;
+       background-position:center center;
+       background-size:258px 26px;
+       cursor:pointer;
 }
 
 #info_div {
@@ -210,3 +220,4 @@ div[id$=_input_div] input{
    background:url('/static/images/trans_load.gif') no-repeat center center;
    background-size:100% 100%;
 }
+
