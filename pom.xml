@@ -298,12 +298,6 @@
 
 
 		<dependency>
-			<groupId>com.futuremove</groupId>
-			<artifactId>cacheServer</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.2</version>
