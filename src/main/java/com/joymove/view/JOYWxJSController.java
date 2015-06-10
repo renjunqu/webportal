@@ -1,10 +1,8 @@
 package com.joymove.view;
 
-import com.joymove.entity.JOYFans;
 import com.joymove.service.JOYFansService;
 import com.joymove.service.JOYWXJSService;
 import com.joymove.util.WeChatPay.WeChatPayUtil;
-import com.mongodb.util.JSON;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

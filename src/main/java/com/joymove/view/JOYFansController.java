@@ -1,9 +1,7 @@
 package com.joymove.view;
 
 
-import com.joymove.entity.JOYCar;
 import com.joymove.service.JOYFansService;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -14,9 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import com.joymove.entity.JOYFans;
-
-import java.util.*;
-
 
 
 @Scope("prototype")
