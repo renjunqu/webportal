@@ -32,7 +32,7 @@ public class JOYFansController {
                JOYFans fan  = new JOYFans();
                fan.email = email;
                fan.mobileNo = mobileNo;
-               joyFansService.insertFans(fan);
+               joyFansService.insertRecord(fan);
                Reobj.put("result","10000");
         } catch(Exception e) {
             Reobj.put("result", "10001");
