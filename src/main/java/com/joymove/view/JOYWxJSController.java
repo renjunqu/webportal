@@ -27,16 +27,21 @@ public class JOYWXJSController {
     final static Logger logger = LoggerFactory.getLogger(JOYWXJSController.class);
 
 
+
+
     @Resource(name = "JOYWXJSService")
     JOYWXJSService joywxjsService;
 
 
     @RequestMapping(value={"wxjs/getSignature"}, method= RequestMethod.POST)
     public  @ResponseBody JSONObject getSignature(@RequestBody JSONObject jsonAttr,HttpServletRequest request){
-        System.out.println("getSignature method was invoked...");
+        logger.trace("getSignature method was invoked...");
         JSONObject Reobj=new JSONObject();
         Reobj.put("result", "10001");
         try {
+
+            String.format("sdfdsf");
+
             JSONObject signJson = new JSONObject();
             signJson.put("noncestr", WeChatPayUtil.genNonceStr());
             signJson.put("timestamp", String.valueOf(System.currentTimeMillis()).substring(0, 10));
@@ -52,7 +57,7 @@ public class JOYWXJSController {
             }
         } catch(Exception e) {
             Reobj.put("result", "10001");
-            System.out.println(e);
+            logger.trace(e.getStackTrace().toString());
         }
         return Reobj;
     }

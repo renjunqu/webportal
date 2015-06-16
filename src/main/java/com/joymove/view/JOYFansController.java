@@ -3,6 +3,8 @@ package com.joymove.view;
 
 import com.joymove.service.JOYFansService;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +20,16 @@ import com.joymove.entity.JOYFans;
 @Controller("JOYFansController")
 public class JOYFansController {
 
+    final static Logger logger = LoggerFactory.getLogger(JOYFansController.class);
+
+
+
     @Resource(name = "JOYFansService")
     JOYFansService joyFansService;
 
     @RequestMapping(value={"fanmgr/addFan"}, method= RequestMethod.POST)
     public  @ResponseBody JSONObject addFan(HttpServletRequest request){
-        System.out.println("addFan method was invoked...");
+        logger.trace("addFan method was invoked...");
         JSONObject Reobj=new JSONObject();
         Reobj.put("result", "10001");
         try {
@@ -36,7 +42,7 @@ public class JOYFansController {
                Reobj.put("result","10000");
         } catch(Exception e) {
             Reobj.put("result", "10001");
-            System.out.println(e);
+            logger.trace(e.getStackTrace().toString());
         }
         return Reobj;
     }
