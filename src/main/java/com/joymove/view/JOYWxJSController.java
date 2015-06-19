@@ -1,9 +1,12 @@
 package com.joymove.view;
 
+import com.joymove.entity.JOYPayReqInfo;
 import com.joymove.service.JOYFansService;
+import com.joymove.service.JOYPayReqInfoService;
 import com.joymove.service.JOYWXJSService;
 import com.joymove.util.WeChatPay.WeChatPayUtil;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
@@ -23,6 +26,9 @@ import javax.servlet.http.HttpServletRequest;
 @Scope("prototype")
 @Controller("JOYWXJSController")
 public class JOYWXJSController {
+
+    @Resource(name = "JOYPayReqInfoService")
+    private JOYPayReqInfoService joyPayReqInfoService;
 
     final static Logger logger = LoggerFactory.getLogger(JOYWXJSController.class);
 
@@ -57,10 +63,35 @@ public class JOYWXJSController {
             }
         } catch(Exception e) {
             Reobj.put("result", "10001");
-            logger.trace(e.getStackTrace().toString());
+            logger.trace("exception: ",e);
         }
         return Reobj;
     }
+
+    @RequestMapping(value={"wxjs/luckPayReq"}, method= RequestMethod.POST)
+    public  @ResponseBody JSONObject luckPayReq(@RequestBody JSONObject jsonAttr,HttpServletRequest request){
+        logger.trace("luckPayReq method was invoked...");
+        JSONObject Reobj=new JSONObject();
+        JOYPayReqInfo wxpayInfo = new JOYPayReqInfo();
+
+        Reobj.put("result", "10001");
+        try {
+
+            String wx_trade_no = "luckPay" + String.valueOf(System.currentTimeMillis());
+            String wx_code = WeChatPayUtil.genePayStr(String.valueOf(Double.valueOf(100).longValue()), wx_trade_no);
+            joyPayReqInfoService.insertRecord(wxpayInfo);  //insertWXPayInfo(wxpayInfo);
+            /** generate result **/
+            wxpayInfo.mobileNo = "18500217642";
+            wxpayInfo.type = JOYPayReqInfo.type_wx;
+            Reobj.put("wx_code",new JSONParser().parse(wx_code));
+        } catch(Exception e) {
+            Reobj.put("result", "10001");
+            logger.trace("exception: ",e);
+        }
+        return Reobj;
+    }
+
+
 
 
 }

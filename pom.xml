@@ -187,7 +187,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.2.1</version>
+			<version>3.2.4</version>
 		</dependency>
 
 		<dependency>
@@ -397,8 +397,8 @@
                	</activeByDefault>
            </activation>
            <properties>
-               <joy_db.name>joymove</joy_db.name>
-               <quartz_db.name>quartz</quartz_db.name>
+               <joy_db.name>joymove_qrj</joy_db.name>
+               <quartz_db.name>quartz_qrj</quartz_db.name>
 			   <mongo_db.name>cacheServer</mongo_db.name>
            </properties>
        </profile>
